@@ -1,29 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.4ee1361a.css",
-    "main.js": "/static/js/main.9754012d.js",
-    "static/media/bg.png": "/static/media/bg.4bced9ec38117be22133.png",
-    "static/media/node.png": "/static/media/node.d980d9636ace07ad3dde.png",
-    "static/media/linkedinicon.png": "/static/media/linkedinicon.e629207bcf2d4e584fac.png",
-    "static/media/codsoft.png": "/static/media/codsoft.c9de21daf52e7f9ce42d.png",
-    "static/media/rokka.png": "/static/media/rokka.5a563019724052eefec6.png",
-    "static/media/css.png": "/static/media/css.bee63b9e863f48d93bda.png",
-    "static/media/cdt.png": "/static/media/cdt.63431e3b4476d79dd05f.png",
-    "static/media/yticon.png": "/static/media/yticon.7572091bd9c1bb5ec6ba.png",
-    "static/media/contntwrite.png": "/static/media/contntwrite.e06f1a259baff3f9aff1.png",
-    "static/media/offpage.jpg": "/static/media/offpage.4c171b7a61a5d2a601b2.jpg",
-    "static/media/contactImg.jpg": "/static/media/contactImg.c8deed1cf1e26bf48fcd.jpg",
-    "static/media/WebDesign.jpg": "/static/media/WebDesign.36c7c261d6eebe09403d.jpg",
-    "static/media/btnImg.png": "/static/media/btnImg.4bcfc0107bcebb987c18.png",
-    "static/media/dirsub.jpg": "/static/media/dirsub.f5872010cbe3e065b1fe.jpg",
-    "static/media/cognifyz.png": "/static/media/cognifyz.78a6b2c0c2212a8fbb05.png",
-    "static/media/VidDesign.jpg": "/static/media/VidDesign.f690f074e42aaf9ebcd2.jpg",
-    "index.html": "/index.html",
-    "main.4ee1361a.css.map": "/static/css/main.4ee1361a.css.map",
-    "main.9754012d.js.map": "/static/js/main.9754012d.js.map"
+    "main.js": "/portfolio/static/js/main.2df399b6.js",
+    "index.html": "/portfolio/index.html",
+    "main.2df399b6.js.map": "/portfolio/static/js/main.2df399b6.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ee1361a.css",
-    "static/js/main.9754012d.js"
+    "static/js/main.2df399b6.js"
   ]
 }
