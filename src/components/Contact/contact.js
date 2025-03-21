@@ -39,7 +39,7 @@ const Contact = () => {
                 <a href="https://www.rokkabrothers.com" target="_blank" rel="noopener noreferrer">
                 <img src={rokka} alt="rokka" className='clientImg'/>
     </a>
-    <a href="https://www.chichiionline.com" target="_blank" rel="noopener noreferrer">
+    <a href="https://chichii.online/" target="_blank" rel="noopener noreferrer">
               <img src={chichii} alt="chichii" className='clientImg'/>
     </a>
                     <img src={cognifyz} alt="cognifyz" className='clientImg'/>
