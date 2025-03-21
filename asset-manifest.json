@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.ba933292.css",
-    "main.js": "/portfolio/static/js/main.1140ee2e.js",
+    "main.js": "/portfolio/static/js/main.fa602d91.js",
     "static/media/bg.png": "/portfolio/static/media/bg.4bced9ec38117be22133.png",
     "static/media/node.png": "/portfolio/static/media/node.d980d9636ace07ad3dde.png",
     "static/media/linkedinicon.png": "/portfolio/static/media/linkedinicon.e629207bcf2d4e584fac.png",
@@ -14,16 +14,16 @@
     "static/media/offpage.jpg": "/portfolio/static/media/offpage.4c171b7a61a5d2a601b2.jpg",
     "static/media/WebDesign.jpg": "/portfolio/static/media/WebDesign.36c7c261d6eebe09403d.jpg",
     "static/media/btnImg.png": "/portfolio/static/media/btnImg.4bcfc0107bcebb987c18.png",
-    "static/media/contactImg.jpg": "/portfolio/static/media/contactImg.2abf73db712c404f4c96.jpg",
     "static/media/dirsub.jpg": "/portfolio/static/media/dirsub.f5872010cbe3e065b1fe.jpg",
     "static/media/cognifyz.png": "/portfolio/static/media/cognifyz.78a6b2c0c2212a8fbb05.png",
     "static/media/VidDesign.jpg": "/portfolio/static/media/VidDesign.f690f074e42aaf9ebcd2.jpg",
+    "static/media/contactImg.jpg": "/portfolio/static/media/contactImg.644aae9063d3524494d8.jpg",
     "index.html": "/portfolio/index.html",
     "main.ba933292.css.map": "/portfolio/static/css/main.ba933292.css.map",
-    "main.1140ee2e.js.map": "/portfolio/static/js/main.1140ee2e.js.map"
+    "main.fa602d91.js.map": "/portfolio/static/js/main.fa602d91.js.map"
   },
   "entrypoints": [
     "static/css/main.ba933292.css",
-    "static/js/main.1140ee2e.js"
+    "static/js/main.fa602d91.js"
   ]
 }
