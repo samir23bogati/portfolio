@@ -13,20 +13,20 @@ const Works = () => {
     <section id="works">
       <h2 className="workstitle">My Skills</h2>
       <span className="worksDesc">
-        I am a **versatile and passionate software engineer** with expertise in{" "}
-        **web development, mobile application development, and digital creativity**. 
-        I specialize in **HTML, CSS, JavaScript, React, and Node.js**, ensuring highly 
-        functional and visually appealing websites.
+        I am a Passionate Software Engineer with expertise in{" "}
+        Web Development, Mobile Application Development, and Digital Creativity. 
+        I specialize in React, Node.js,Dart,Flutter,MERN STACK ensuring highly 
+        functional and visually appealing Websites.
         <br />
         <br />
-        As an **Android & Flutter developer**, I create seamless, intuitive applications 
-        that deliver great user experiences. My skill set also includes **SEO optimization**, 
+        As an Android & Flutter developer, I create seamless, intuitive applications 
+        that deliver great user experiences. My skill set also includes SEO Optimization, 
         helping businesses enhance their digital presence. Additionally, I have a strong 
-        foundation in **video editing**, blending technology with creativity.
+        foundation in Video Editing, blending technology with creativity.
         <br />
         <br />
-        Whether designing interfaces, developing full-stack applications, or optimizing 
-        online reach, I am committed to **innovation, performance, and excellence** in 
+        Whether Designing Interfaces, Developing Full-Stack applications, or optimizing 
+        online reach, I am committed to Innovation, Performance, and Excellence in 
         every project I undertake.
       </span>
       

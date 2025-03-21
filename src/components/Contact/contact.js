@@ -4,6 +4,7 @@ import cdt from '../../assets/cdt.png';
 import cognifyz from '../../assets/cognifyz.png';
 import rokka from '../../assets/rokka.png';
 import codsoft from '../../assets/codsoft.png';
+import chichii from '../../assets/chichii.png';
 import FacebookIcon from '../../assets/fbicon.png';
 import InstagramIcon from '../../assets/igicon.png';
 import LinkedinIcon from '../../assets/linkedinicon.png';
@@ -38,7 +39,9 @@ const Contact = () => {
                 <a href="https://www.rokkabrothers.com" target="_blank" rel="noopener noreferrer">
                 <img src={rokka} alt="rokka" className='clientImg'/>
     </a>
-                   
+    <a href="https://www.chichiionline.com" target="_blank" rel="noopener noreferrer">
+              <img src={chichii} alt="chichii" className='clientImg'/>
+    </a>
                     <img src={cognifyz} alt="cognifyz" className='clientImg'/>
                     <img src={cdt} alt="cherie" className='clientImg'/>
                     <img src={codsoft} alt="codsoft" className='clientImg'/>
