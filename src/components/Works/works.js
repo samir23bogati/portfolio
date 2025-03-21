@@ -6,6 +6,7 @@ import css from "../../assets/css.png";
 import js from "../../assets/js.png";
 import node from "../../assets/node.png";
 import github from "../../assets/github.png";
+import flutter from "../../assets/flutter.jpg";
 
 const Works = () => {
   return (
@@ -18,6 +19,7 @@ const Works = () => {
         <img src={js} alt="js" className="worksImg"/>
         <img src={rct} alt="react" className="worksImg"/>
         <img src={node} alt="node" className="worksImg"/>
+        <img src={flutter} alt="node" className="worksImg"/>
         <img src={github} alt="github" className="worksImg"/>
       </div>
       <button className="workBtn">See More</button>
