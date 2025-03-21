@@ -12,7 +12,7 @@ const Navbar = () => {
     <nav className="navbar">
      <img src={logo} alt="Brand Logo" className='logo' />
       <div className="desktopMenu">
-        {["intro",  "works","skills", "clients"].map((section) => (
+        {["intro", "skills", "works", "clients"].map((section) => (
           <Link 
             key={section}
             activeClass="active"
@@ -42,7 +42,7 @@ const Navbar = () => {
       <img src={Menu} alt="Menu Icon" className='mobMenu' onClick={() => setShowMenu(!showMenu)} />
 
       <div className={`navMenu ${showMenu ? 'show' : ''}`}>
-        {["intro",  "works","skills", "clients", "contact"].map((section) => (
+        {["intro","skills",  "works", "clients", "contact"].map((section) => (
           <Link 
             key={section}
             activeClass="active"
