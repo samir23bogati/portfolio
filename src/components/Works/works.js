@@ -6,7 +6,7 @@ import css from "../../assets/css.png";
 import js from "../../assets/js.png";
 import node from "../../assets/node.png";
 import github from "../../assets/github.png";
-import flutter from "../../assets/flutter.jpg";
+import flutter from "../../assets/flutter.png";
 
 const Works = () => {
   return (
