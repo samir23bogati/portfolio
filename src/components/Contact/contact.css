@@ -1,6 +1,6 @@
 #contactPage {
     min-height: calc(100vh - 4rem);
-    width:100vw;
+    width:100%;
     max-width: 60rem;
     margin: 0 auto;
     text-align: center;
@@ -8,29 +8,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding:1rem,
 }
 .contactPageTitle{
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 .clientDesc{
     font-weight: 300;
     font-size: 1rem;
+    padding: 0 1rem;
 }
 .clientImgs{
     margin: 1rem 0;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 .clientImg {
     object-fit: cover;
-    width:23%;
-    min-width: 9rem;
-    margin:auto;
-    padding:0.25rem;
+    width: 30%;
+    min-width: 7rem;
+    padding: 0.25rem;
 }
 #clients{
-    padding: 2rem;
+    padding: 1.5rem;
 }
 .contactDesc {
     padding: 1rem;
@@ -45,13 +48,12 @@
     align-items: center;
     justify-content: center;
     width: 90vw;
-    max-width: 60rem;
-    position: relative; 
+    max-width: 40rem;
 }
 .name , .email ,.msg {
-    font-size: medium;
+    font-size: 1rem;
     width:100%;
-    max-width: 40rem;
+    max-width: 35rem;
     margin: 0.5rem;
     padding: 0.5rem 1rem;
     color:white;
@@ -61,20 +63,69 @@
 }
 .submitBtn{
     background: white;
-    border: 2px solid red; /* Debug border */
+    border: 2px solid red; 
     border-radius: 0.5rem;
-    margin: 2rem;
+    margin: 1.5rem;
     padding: 0.75rem 3.5rem;
-    cursor: pointer; /* Ensure pointer cursor */
-    pointer-events: auto; /* Ensure pointer events */
+    cursor: pointer; 
 }
 .links{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 .link{
     object-fit: cover;
-    height:3rem;
-    width:3rem;
-    margin: 0 0.75rem;
+    height:2.5rem;
+    width:2.5rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .contactPageTitle {
+        font-size: 2rem;
+    }
+
+    .clientImg {
+        width: 45%;
+    }
+
+    .contactDesc {
+        font-size: 0.9rem;
+    }
+
+    .name,
+    .email,
+    .msg {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .submitBtn {
+        padding: 0.6rem 2.5rem;
+    }
+
+    .link {
+        height: 2rem;
+        width: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contactPageTitle {
+        font-size: 1.8rem;
+    }
+
+    .clientImg {
+        width: 100%;
+    }
+
+    .contactDesc {
+        font-size: 0.85rem;
+    }
+
+    .submitBtn {
+        padding: 0.5rem 2rem;
+    }
 }

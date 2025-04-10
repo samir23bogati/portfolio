@@ -39,7 +39,7 @@ const Works = () => {
         <img src={flutter} alt="flutter" className="worksImg" />
         <img src={github} alt="github" className="worksImg" />
       </div>
-      <button className="workBtn" onClick={() => window.open("your-portfolio-link", "_blank")}>See More</button>
+      <button className="workBtn">See More</button>
     </section>
   );
 };

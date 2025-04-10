@@ -4,6 +4,7 @@ import cdt from '../../assets/cdt.png';
 import cognifyz from '../../assets/cognifyz.png';
 import rokka from '../../assets/rokka.png';
 import codsoft from '../../assets/codsoft.png';
+import Sale247 from '../../assets/sale247.jpg';
 import chichii from '../../assets/chichii.png';
 import FacebookIcon from '../../assets/fbicon.png';
 import InstagramIcon from '../../assets/igicon.png';
@@ -38,6 +39,9 @@ const Contact = () => {
                 <div className='clientImgs'>
                 <a href="https://www.rokkabrothers.com" target="_blank" rel="noopener noreferrer">
                 <img src={rokka} alt="rokka" className='clientImg'/>
+    </a>
+    <a href="https://sale247.netlify.app/" target="_blank" rel="noopener noreferrer">
+                <img src={Sale247} alt="Sale247" className='clientImg'/>
     </a>
     <a href="https://chichii.online/" target="_blank" rel="noopener noreferrer">
               <img src={chichii} alt="chichii" className='clientImg'/>

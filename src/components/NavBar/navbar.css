@@ -1,9 +1,11 @@
 /* Navbar Styling */
 .navbar {
-    background: rgb(30,30,30);
+    background: rgb(30,30,30,0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     height: 5rem;
     width: 100vw;
-    max-width: 75rem;
+    max-width: 90%;
     margin: 0 auto;
     padding: 1rem 2rem;
     display: flex;
@@ -14,7 +16,22 @@
     z-index: 100;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
+@keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .navbar {
+    animation: slideDown 0.6s ease forwards;
+  }
+  
+  
 /* Logo with a smooth bounce effect */
 @keyframes bounce {
     0%, 100% {
@@ -30,18 +47,36 @@
     height: 3rem;
     width: 4rem;
     animation: bounce 2s infinite;
+    transition: transform 0.3s;
 }
+.logo:hover {
+    animation: bounce 1s infinite;
+  }
 
 /* Desktop Menu Items */
 .desktopMenuListItem {
     margin: 1rem;
     cursor: pointer;
+    position: relative;
     font-size: 1rem;
     font-weight: 500;
     color: white;
     transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
 }
-
+.desktopMenuListItem::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    transition: width 0.3s ease;
+  }
+  
+  .desktopMenuListItem:hover::after {
+    width: 100%;
+  }
 .desktopMenuListItem:hover {
     color: rgb(255, 0, 0);
     padding-bottom: 0.3rem;
@@ -105,13 +140,17 @@
     min-width: 15rem;
     background-color: rgb(40,40,40);
     border-radius: 1rem;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(6px);
+    transform-origin: top right;
+    transform: scale(0.95);
 }
 
 .navMenu.show {
     display: flex;
     animation: fadeIn 0.3s ease-in-out;
+    transform: scale(1);
 }
 
 /* Mobile Menu Fade-in Animation */
