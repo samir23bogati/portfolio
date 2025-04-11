@@ -1,78 +1,105 @@
-#skills{
-    overflow: hidden;
-    width: 100vw;
-    max-width: 65rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+#skills {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     text-align: center;
-    margin:0 auto;
-}
+    padding: 2rem 1rem;
+  }
 .skillTitle{
     font-size: 3rem;
-    font-weight: 600;
-    padding-top: 0.21rem;
-    margin-bottom: 1.5rem;;
+    font-weight: 700;
+    margin-bottom: 1rem;
+   color: #fff;
 }
 .skillDesc {
     font-weight: 400;
-    font-size: 1rem;
-    max-width: 51.01rem;
+    font-size: 1.1rem;
+    max-width: 700px;
     padding: 0 2 rem;
+    margin: 0 auto 2rem;
 }
-.skillBar{
-    display:flex;
-    margin:1rem;
-    padding:1.5rem 2rem;
-    border-radius: 0.55rem;
-    background: rgb(50,50,50);
-}
-.skillBarText h2{
-   
+.skillGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+  .skillCard {
+    background: #2a2a2a;
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 1rem;
     display: flex;
-    font-size: 1.5rem;    
-  font-weight: bold;       
-  margin: 0.5rem 0;     
-  text-align: left;       
-  padding-left: 1rem; 
-}
-.skillBarText a {
-    color: #ff5733; 
-    font-size: 1.61rem; 
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
   }
   
-  .skillBarText a:hover {
-    color: #c70039; 
+  .skillCard:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
   }
-  .skillBarText p{
-    font-size: 1rem; 
-    font-weight: 300; 
-    text-align: left; 
-    line-height: 1.4; 
-  }
-.skillBarImg{
+  
+  .skillCardImg {
+    width: 100%;
+    max-height: 160px;
     object-fit: cover;
-    height: 4rem;
-    width: 4rem;
-    margin-right: 2rem;
-}
-
-
-@media screen and (max-width:720px) {
-    .skillBarText >p {
-        font-size: 2vw;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .skillCardText h3 {
+    color: #fff;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .skillCardText p {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  .skillCardText a {
+    color: #ff6b6b;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .skillCardText a:hover {
+    color: #ff2e63;
+    text-decoration: underline;
+  }
+  
+  /* Animations */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
     }
-}
-@media screen and (max-width:480px) {
-    .skillBarText >p {
-        font-size: 3vw;
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .skillBarImg{
-        height:2.25rem;
-        width:2.25rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .skillTitle {
+      font-size: 2.2rem;
     }
-    .skillBarText>h2{
-    font-size: 5vw;
+  
+    .skillDesc {
+      font-size: 1rem;
     }
-}
+  
+    .skillCardText h3 {
+      font-size: 1.1rem;
+    }
+  
+    .skillCardText p {
+      font-size: 0.9rem;
+    }
+  }
