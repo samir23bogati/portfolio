@@ -17,68 +17,66 @@ const Contact = () => {
     
     const sendEmail = (e) => {
         e.preventDefault();
-        console.log('Send email function called');
         emailjs.sendForm('service_jgd6hky', 'template_fza9pby', form.current, 'E96jxSkDoQ8KGI72h')
             .then((result) => {
                 console.log(result.text);
                 alert('Email Sent!');
-                e.target.reset(); // Clear the form after sending
+                e.target.reset(); 
             }, (error) => {
-                console.error('Failed to send email', error); // Log the entire error object
+                console.error('Failed to send email', error); 
                 alert('Failed to send email, please try again later.');
             });
     };
 
     return (
-        <section id='contactPage'>
-            <div id='clients'>
-                <h1 className='contactPageTitle'>My Clients</h1>
-                <p className='clientDesc'>
-                    I have had the opportunity to work with a diverse group of companies. Some of the notable companies I have worked with include:
-                </p>
-                <div className='clientImgs'>
-                <a href="https://www.rokkabrothers.com" target="_blank" rel="noopener noreferrer">
-                <img src={rokka} alt="rokka" className='clientImg'/>
-    </a>
-    <a href="https://sale247.netlify.app/" target="_blank" rel="noopener noreferrer">
-                <img src={Sale247} alt="Sale247" className='clientImg'/>
-    </a>
-    <a href="https://chichii.online/" target="_blank" rel="noopener noreferrer">
-              <img src={chichii} alt="chichii" className='clientImg'/>
-    </a>
-                    <img src={cognifyz} alt="cognifyz" className='clientImg'/>
-                    <img src={cdt} alt="cherie" className='clientImg'/>
-                    <img src={codsoft} alt="codsoft" className='clientImg'/>
-                </div>
+        <section id="contactPage">
+        <div id="clients" className="fade-in">
+          <h1 className="contactPageTitle">My Clients</h1>
+          <p className="clientDesc">
+            I’ve had the opportunity to work with a diverse group of companies. Some notable ones include:
+          </p>
+          <div className="clientImgs">
+            <a href="https://www.rokkabrothers.com" target="_blank" rel="noopener noreferrer">
+              <img src={rokka} alt="rokka" className="clientImg" />
+            </a>
+            <a href="https://sale247.netlify.app/" target="_blank" rel="noopener noreferrer">
+              <img src={Sale247} alt="Sale247" className="clientImg" />
+            </a>
+            <a href="https://chichii.online/" target="_blank" rel="noopener noreferrer">
+              <img src={chichii} alt="chichii" className="clientImg" />
+            </a>
+            <img src={cognifyz} alt="cognifyz" className="clientImg" />
+            <img src={cdt} alt="cherie" className="clientImg" />
+            <img src={codsoft} alt="codsoft" className="clientImg" />
+          </div>
+        </div>
+  
+        <div id="contact" className="fade-in">
+          <h1 className="contactPageTitle">Contact Me</h1>
+          <span className="contactDesc">Let’s connect! Fill out the form to discuss work or opportunities.</span>
+          <form className="contactForm" ref={form} onSubmit={sendEmail}>
+            <input type="text" className="name" placeholder="Your Name" name="your_name" required />
+            <input type="email" className="email" placeholder="Your Email" name="your_email" required />
+            <textarea className="msg" name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit" className="submitBtn">Submit</button>
+            <div className="links">
+              <a href="https://www.facebook.com/Snookysamir/" target="_blank" rel="noopener noreferrer">
+                <img src={FacebookIcon} alt="Facebook" className="link hover-bounce" />
+              </a>
+              <a href="https://www.instagram.com/samirbogati/" target="_blank" rel="noopener noreferrer">
+                <img src={InstagramIcon} alt="Instagram" className="link hover-bounce" />
+              </a>
+              <a href="https://www.linkedin.com/in/samir-bogati-62bb04165/" target="_blank" rel="noopener noreferrer">
+                <img src={LinkedinIcon} alt="Linkedin" className="link hover-bounce" />
+              </a>
+              <a href="https://www.youtube.com/@samirbogati4451" target="_blank" rel="noopener noreferrer">
+                <img src={YoutubeIcon} alt="Youtube" className="link hover-bounce" />
+              </a>
             </div>
-            <div id='contact'>
-                <h1 className='contactPageTitle'>Contact Me</h1>
-                <span className='contactDesc'>Please fill out the form below to discuss any work opportunities</span>
-                <form className='contactForm' ref={form} onSubmit={sendEmail}>
-                    <input type="text" className='name' placeholder='Your Name' name='your_name'/>
-                    <input type="email" className='email' placeholder='Your Email' name='your_email'/>
-                    <textarea className="msg" name="message" rows="5" placeholder='Your Message'></textarea>
-                    <button type='submit' value='send' className='submitBtn'>Submit</button>
-                    <div className='links'>
-                        <a href="https://www.facebook.com/Snookysamir/" target="_blank" rel="noopener noreferrer">
-      <img src={FacebookIcon} alt="Facebook" className="link" />
-    </a>
-    <a href="https://www.instagram.com/samirbogati/" target="_blank" rel="noopener noreferrer">
-    <img src={InstagramIcon} alt="Instagram" className='link' />
-    </a>
-    <a href="https://www.linkedin.com/in/samir-bogati-62bb04165/" target="_blank" rel="noopener noreferrer">
-    <img src={LinkedinIcon} alt="Linkedin" className='link' />
-    </a>
-    <a href="https://www.youtube.com/@samirbogati4451" target="_blank" rel="noopener noreferrer">
-    <img src={YoutubeIcon} alt="Youtube" className='link' />
-    </a>
-                        
-                      
-                    </div>
-                </form>
-            </div>
-        </section>
+          </form>
+        </div>
+      </section>
     );
-}
-
-export default Contact;
+  };
+  
+  export default Contact;

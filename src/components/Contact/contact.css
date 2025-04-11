@@ -1,37 +1,48 @@
 #contactPage {
-    min-height: calc(100vh - 4rem);
-    width:100%;
-    max-width: 60rem;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding:1rem,
+    min-height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #121212;
+  color: white;
+  animation: fadeIn 1.2s ease-in-out;
 }
 .contactPageTitle{
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
+    font-weight: bold;
 }
-.clientDesc{
-    font-weight: 300;
-    font-size: 1rem;
-    padding: 0 1rem;
+.clientDesc,
+.contactDesc {
+  font-weight: 300;
+  font-size: 1rem;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  color: #ccc;
 }
-.clientImgs{
-    margin: 1rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+.clientImgs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+    justify-items: center;
 }
 .clientImg {
-    object-fit: cover;
-    width: 30%;
-    min-width: 7rem;
-    padding: 0.25rem;
+    width: 100%;
+    height: auto;
+    max-width: 10rem;
+    object-fit: contain;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: #f8f8f8;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+  .clientImg:hover {
+    transform: scale(1.05);
+  }
 #clients{
     padding: 1.5rem;
 }
@@ -41,58 +52,85 @@
     font-weight :300;
 }
 
-.contactForm{
-    margin:1rem;
-    display:flex;
-    flex-direction:column;
+.contactForm {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #222;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 90vw;
+    width: 90%;
     max-width: 40rem;
 }
-.name , .email ,.msg {
+
+.name, .email, .msg {
     font-size: 1rem;
-    width:100%;
-    max-width: 35rem;
-    margin: 0.5rem;
-    padding: 0.5rem 1rem;
-    color:white;
-    border:none;
+    width: 100%;
+    margin: 0.75rem 0;
+    padding: 0.75rem 1rem;
     border-radius: 0.5rem;
-    background : rgb(40,40,40);
+    border: none;
+    color: white;
+    background: #333;
 }
-.submitBtn{
-    background: white;
-    border: 2px solid red; 
+.submitBtn {
+    padding: 0.75rem 3rem;
+    background: #fff;
+    color: #000;
+    border: 2px solid red;
     border-radius: 0.5rem;
-    margin: 1.5rem;
-    padding: 0.75rem 3.5rem;
-    cursor: pointer; 
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.submitBtn:hover {
+    background: red;
+    color: #fff;
+    border-color: #fff;
 }
 .links{
+    margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
 }
 .link{
     object-fit: cover;
     height:2.5rem;
     width:2.5rem;
+    transition: transform 0.3s ease;
 }
-
+.hover-bounce:hover {
+    transform: scale(1.2);
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .contactPageTitle {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .clientImg {
-        width: 45%;
+        width: 40%;
+    }
+    .clientImgs {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .contactDesc {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .name,
@@ -103,22 +141,25 @@
     }
 
     .submitBtn {
-        padding: 0.6rem 2.5rem;
-    }
-
-    .link {
+        padding: 0.6rem 2rem;
+      }
+    
+      .link {
         height: 2rem;
         width: 2rem;
+      }
     }
-}
 
 @media (max-width: 480px) {
     .contactPageTitle {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     .clientImg {
         width: 100%;
+    }
+    .clientImgs {
+        grid-template-columns: 1fr;
     }
 
     .contactDesc {
@@ -126,6 +167,6 @@
     }
 
     .submitBtn {
-        padding: 0.5rem 2rem;
+        padding: 0.5rem 1.8rem;
     }
 }
