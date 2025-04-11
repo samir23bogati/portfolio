@@ -16,30 +16,49 @@
     flex-direction:column;
     justify-content: center;
     box-sizing: border-box;
+    color: #fff;
+  z-index: 2; 
+  position: relative;
+  animation: fadeIn 2s ease-out; 
 }
+
 .hello{
     font-size: 1.8rem;
     font-weight: 100;
 }
 .introName{
-    color:red;
+    color: #ff4f5b;
+    font-weight: bold;
+    font-size: 3rem;
 }
 .introPara{
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 380;
     letter-spacing: 1px;
+    max-width: 80%;
+    margin-top: 1rem;
+    line-height: 1.6;
 }
 .btn{
     background: white;
     margin:1rem 0;
     padding:0.78rem 1.5rem;
     border: none;
-    border-radius: 2rem;
-    align-items: center;
+  border-radius: 2rem;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
 }
+.btn:hover {
+    background: #e73c4f; 
+  }
 .btnImg{
     object-fit: cover;
-    margin: 0rem 0.25rem;
+    margin-right: 0.5rem;
     height:2rem;
 
 }
@@ -52,6 +71,7 @@
     object-fit: cover;
     height: 100 vh;
     transform: scaleX(-1); 
+    
 }
 
 .bg {
@@ -62,6 +82,25 @@
     position: absolute;
 
 }
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 @media screen and (max-width:840px){
     .bg{
         width: 80%;
@@ -107,4 +146,6 @@ right: -15vw;}
     .bg {
         width: 96%;
     right: -18vw;}
-    }
+    } .btn {
+        font-size: 1rem;
+      }
