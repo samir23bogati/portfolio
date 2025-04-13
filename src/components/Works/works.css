@@ -40,27 +40,35 @@
     transform: translateY(-5px);
 }
 .worksImgs{
-    display:flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    max-width: 65rem;
-    width: 90%;
-    gap: 1rem;
-    margin-top: 2rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 2fr));
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+    width: 100%;
+   max-width: 1000px;
+  justify-content: center;
 }
 .worksImg{
-    object-fit: cover;
-    height: 20rem;
-    margin:0.5rem;
-    transition: transform 0.3s ease,box-shadow 0.3s ease;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  height: 100px;
+  width: 140px;
+  padding: 1rem;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .worksImg:hover {
-    transform: scale(1.05); /* Scale effect on hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  }
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
 .workBtn{
     padding:0.75rem 3rem;
     border: none;
@@ -97,8 +105,9 @@
     
     @media screen and (max-width: 585px) {
       .worksImg {
-        height: 47vw;
-        width: 45vw;
+        height: 30vw;
+        width: 40vw;
+        padding: 0.8rem;
       }
     
       .workstitle {

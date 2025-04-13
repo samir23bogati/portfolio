@@ -7,6 +7,11 @@ import js from "../../assets/js.png";
 import node from "../../assets/node.png";
 import github from "../../assets/github.png";
 import flutter from "../../assets/flutter.jpg";
+import firebase from "../../assets/Firebase.png";
+import firestore from "../../assets/firestore.png";
+import dart from "../../assets/dart.png";
+import android from "../../assets/android.png";
+import googleplayconsole from "../../assets/googleplayconsole.png";
 
 const Works = () => {
   return (
@@ -38,6 +43,11 @@ const Works = () => {
         <img src={node} alt="node" className="worksImg" />
         <img src={flutter} alt="flutter" className="worksImg" />
         <img src={github} alt="github" className="worksImg" />
+        <img src={firebase} alt="firebase" className="worksImg" />
+        <img src={dart} alt="dart" className="worksImg" />
+        <img src={firestore} alt="firestore" className="worksImg" />
+        <img src={android} alt="android" className="worksImg" />
+        <img src={googleplayconsole} alt="googleplayconsole" className="worksImg" />
       </div>
       <button className="workBtn">See More</button>
     </section>
