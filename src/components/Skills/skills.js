@@ -1,26 +1,46 @@
 import React from "react";
 import './skills.css';
 import UIDesign from "../../assets/UIDesign.png";
-import WebDesign from "../../assets/WebDesign.jpg";
-import VidDesign from "../../assets/VidDesign.jpg";
+import WebDesign from "../../assets/WebDesign.png";
+import VidDesign from "../../assets/VidDesign.png";
 import dirsub from "../../assets/dirsub.jpg";
 import offpage from "../../assets/offpage.jpg";
 import contntwrite from "../../assets/contntwrite.png";
+
 const skillData = [
   {
     img: UIDesign,
     title: "Website Development",
-    desc: <>Previously developed website: <a href="https://www.rokkabrothers.com" target="_blank" rel="noopener noreferrer">RokkaBrothers</a></>
+    desc: (
+      <>
+        Previously developed website: <br />
+        <a href="https://www.rokkabrothers.com" target="_blank" rel="noopener noreferrer">RokkaBrothers</a>
+      </>
+    )
   },
   {
     img: WebDesign,
     title: "App Design",
-    desc: <>Visit my GitHub to see some of my works: <a href="https://github.com/samir23bogati" target="_blank" rel="noopener noreferrer">@samir23bogati</a></>
+    desc: (
+      <>
+        Live on Play Store:<br />
+        <a href="https://play.google.com/store/apps/details?id=com.chichii.online&hl=en_US" target="_blank" rel="noopener noreferrer">
+          Chichii Online
+        </a>
+        <br />
+        A fully functional food ordering app with modern UI/UX, Firebase integration, order tracking, and BLoC state management. Built using Flutter and deployed to production.
+      </>
+    )
   },
   {
     img: VidDesign,
     title: "Video Editing",
-    desc: <>Visit my YouTube: <a href="https://www.youtube.com/channel/UCLysA-GNyeNdPo8MVcn1e-A" target="_blank" rel="noopener noreferrer">@samirbogati</a></>
+    desc: (
+      <>
+        Visit my YouTube: <br />
+        <a href="https://www.youtube.com/channel/UCLysA-GNyeNdPo8MVcn1e-A" target="_blank" rel="noopener noreferrer">@samirbogati</a>
+      </>
+    )
   },
   {
     img: dirsub,
@@ -44,8 +64,7 @@ const Skills = () => {
     <section id='skills'>
       <h2 className="skillTitle">What do I do?</h2>
       <p className="skillDesc">
-        I am a skilled and passionate web designer with experience in creating visually appealing and user-friendly websites.
-        I have a strong understanding of design and a keen eye for detail. Proficient in HTML, CSS, JavaScript, React, Node, and Video Editing.
+        I am a passionate full-stack developer and UI/UX designer skilled in creating clean, responsive websites and applications. I specialize in React, Node.js, Flutter, Firebase, and SEO strategies to build solutions that are fast, modern, and scalable.
       </p>
       <div className="skillGrid">
         {skillData.map((skill, index) => (
