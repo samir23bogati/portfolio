@@ -12,10 +12,9 @@ const Navbar = () => {
     <nav className="navbar">
       <img src={logo} alt="Brand Logo" className='logo' />
 
-      {/* DESKTOP MENU */}
       <div className="desktopMenu">
 
-        {/* Intro */}
+       
         <Link
           activeClass="active"
           to="intro"
@@ -28,10 +27,10 @@ const Navbar = () => {
           Intro
         </Link>
 
-        {/* Skills → goes to works */}
+       
         <Link
           activeClass="active"
-          to="works"        // swapped
+          to="works"       
           spy={true}
           smooth={true}
           offset={-50}
@@ -41,10 +40,10 @@ const Navbar = () => {
           Skills
         </Link>
 
-        {/* Works → goes to skills */}
+        
         <Link
           activeClass="active"
-          to="skills"       // swapped
+          to="skills"     
           spy={true}
           smooth={true}
           offset={-50}
@@ -54,7 +53,7 @@ const Navbar = () => {
           Works
         </Link>
 
-        {/* Clients */}
+      
         <Link
           activeClass="active"
           to="clients"
@@ -69,7 +68,7 @@ const Navbar = () => {
 
       </div>
 
-      {/* CONTACT BUTTON */}
+     
       <Link
         to='contact'
         spy={true}
@@ -82,7 +81,7 @@ const Navbar = () => {
         Contact Me
       </Link>
 
-      {/* MOBILE MENU ICON */}
+     
       <img
         src={Menu}
         alt="Menu Icon"
@@ -90,10 +89,10 @@ const Navbar = () => {
         onClick={() => setShowMenu(!showMenu)}
       />
 
-      {/* MOBILE MENU */}
+     
       <div className={`navMenu ${showMenu ? 'show' : ''}`}>
 
-        {/* Intro */}
+      
         <Link
           to="intro"
           activeClass="active"
@@ -107,9 +106,9 @@ const Navbar = () => {
           Intro
         </Link>
 
-        {/* Skills → goes to works */}
+       
         <Link
-          to="works"     // swapped
+          to="works"    
           activeClass="active"
           spy={true}
           smooth={true}
@@ -121,9 +120,9 @@ const Navbar = () => {
           Skills
         </Link>
 
-        {/* Works → goes to skills */}
+       
         <Link
-          to="skills"    // swapped
+          to="skills"   
           activeClass="active"
           spy={true}
           smooth={true}
@@ -135,7 +134,7 @@ const Navbar = () => {
           Works
         </Link>
 
-        {/* Clients */}
+      
         <Link
           to="clients"
           activeClass="active"
@@ -149,7 +148,7 @@ const Navbar = () => {
           Clients
         </Link>
 
-        {/* Contact */}
+      
         <Link
           to="contact"
           activeClass="active"
