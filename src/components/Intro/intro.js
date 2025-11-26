@@ -17,7 +17,12 @@ const Intro = () => {
             <br /> Eager to Learn And Develop Skills As Full Stack Developer.
           </p>
         </span>
-        <Link>
+       <Link
+          to="contact"          // id of the target section
+          smooth={true}         // smooth scrolling
+          duration={500}        // animation duration in ms
+          offset={-50}          // optional: adjust for sticky navbar
+        >
           <button className="btn">
             <img src={btnImg} alt="Hire ME" className="btnImg" />
             Hire Me
