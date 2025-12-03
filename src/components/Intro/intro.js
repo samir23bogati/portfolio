@@ -11,10 +11,11 @@ const Intro = () => {
         <span className="introText">
           I'm <span className="introName">Samir Bogati</span>
           <br />
-          Computer Engineer{" "}
+          Computer Engineer{" "} <br />
+          Full-Stack Developer (Web & Mobile)
           <p className="introPara">
-            Enthusiastic Computer Engineering Student.
-            <br /> Eager to Learn And Develop Skills As Full Stack Developer.
+            Passionate about building scalable applications and delivering
+        seamless user experiences.
           </p>
         </span>
        <Link
