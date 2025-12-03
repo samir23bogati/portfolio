@@ -14,7 +14,7 @@ const Intro = () => {
           Computer Engineer{" "} <br />
           Full-Stack Developer (Web & Mobile)
           <p className="introPara">
-            Passionate about building scalable applications and delivering
+            Passionate about building scalable applications <br />and delivering
         seamless user experiences.
           </p>
         </span>
