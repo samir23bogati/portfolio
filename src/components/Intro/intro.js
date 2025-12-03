@@ -11,8 +11,7 @@ const Intro = () => {
         <span className="introText">
           I'm <span className="introName">Samir Bogati</span>
           <br />
-          Computer Engineer{" "} <br />
-          Full-Stack Developer (Web & Mobile)
+          Computer Engineer{" "} 
           <p className="introPara">
             Passionate about building scalable applications <br />and delivering
         seamless user experiences.
