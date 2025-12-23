@@ -6,14 +6,8 @@ import path from "path";
 const router = express.Router();
 
 // Multer Storage Configuration
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  },
-});
+// Multer Memory Storage (for Vercel/Serverless)
+const storage = multer.memoryStorage();
 
 const upload = multer({ 
   storage,

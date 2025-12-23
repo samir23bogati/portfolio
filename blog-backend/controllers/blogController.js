@@ -10,7 +10,8 @@ export const updateBlog = async (req, res) => {
   }
 
   if (req.file) {
-    updateData.image = `/uploads/${req.file.filename}`;
+    const b64 = Buffer.from(req.file.buffer).toString("base64");
+    updateData.image = `data:${req.file.mimetype};base64,${b64}`;
   }
 
   try {
@@ -65,7 +66,11 @@ export const getBlogs = async (req, res) => {
 // Create a new blog
 export const createBlog = async (req, res) => {
   const { title, sectionOne, sectionTwo, category, author } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : null;
+  let image = null;
+  if (req.file) {
+    const b64 = Buffer.from(req.file.buffer).toString("base64");
+    image = `data:${req.file.mimetype};base64,${b64}`;
+  }
 
   // Ensure category is stored as array
   const categoryArray = Array.isArray(category) ? category : category.split(',');
