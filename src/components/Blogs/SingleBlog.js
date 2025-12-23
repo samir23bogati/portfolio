@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import { getApiUrl } from "../../apiConfig";
 import "./SingleBlog.css";
 
 const SingleBlog = () => {
@@ -14,7 +15,7 @@ const SingleBlog = () => {
 
   const fetchBlog = async () => {
     try {
-      const baseUrl = `http://${window.location.hostname}:5000`;
+      const baseUrl = getApiUrl();
       const response = await axios.get(`${baseUrl}/api/blogs/${id}`);
       setBlog(response.data);
     } catch (error) {
@@ -81,7 +82,7 @@ const SingleBlog = () => {
           )}
         </div>
 
-        {blog.image && <img src={`http://localhost:5000${blog.image}`} alt={blog.title} className="blogImg" />}
+        {blog.image && <img src={`${getApiUrl()}${blog.image}`} alt={blog.title} className="blogImg" />}
 
         {blog.sectionTwo && (
           <div className="blogContent sectionTwo">

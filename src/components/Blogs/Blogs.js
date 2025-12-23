@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import "./Blogs.css"; // We'll create this next
+import { getApiUrl } from "../../apiConfig"; 
+import "./Blogs.css";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -17,7 +18,7 @@ const Blogs = () => {
 
   const fetchBlogs = async () => {
     try {
-      const baseUrl = `http://${window.location.hostname}:5000`;
+      const baseUrl = getApiUrl();
       const response = await axios.get(`${baseUrl}/api/blogs`, {
         params: { search, category, page, limit: 9 }
       });
@@ -96,7 +97,7 @@ const Blogs = () => {
         ) : (
           blogs.map((blog) => (
             <div key={blog._id} className="blogCard">
-              {blog.image && <img src={`http://localhost:5000${blog.image}`} alt={blog.title} className="blogCardImg" />}
+              {blog.image && <img src={`${getApiUrl()}${blog.image}`} alt={blog.title} className="blogCardImg" />}
               <h3 className="blogCardTitle">{blog.title}</h3>
               <div className="blogMeta">
                 <span className="blogViews">👁️ {blog.views}</span>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { getApiUrl } from "../../apiConfig";
 import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
@@ -28,7 +29,7 @@ const AdminDashboard = () => {
 
   const fetchBlogs = async () => {
     try {
-      const baseUrl = `http://${window.location.hostname}:5000`;
+      const baseUrl = getApiUrl();
       const response = await axios.get(`${baseUrl}/api/blogs`);
       // Since API returns object with blogs array now
       setBlogs(response.data.blogs || response.data); 
@@ -68,7 +69,7 @@ const AdminDashboard = () => {
     }
 
     try {
-      const baseUrl = `http://${window.location.hostname}:5000`;
+      const baseUrl = getApiUrl();
       if (editingId) {
         await axios.put(`${baseUrl}/api/blogs/${editingId}`, data, {
             headers: { "Content-Type": "multipart/form-data" },
@@ -117,7 +118,7 @@ const AdminDashboard = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this blog?")) {
         try {
-            const baseUrl = `http://${window.location.hostname}:5000`;
+            const baseUrl = getApiUrl();
             await axios.delete(`${baseUrl}/api/blogs/${id}`);
             setMessage("Blog deleted successfully!");
             fetchBlogs();
