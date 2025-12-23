@@ -1,0 +1,173 @@
+/* Multi-Select Checkboxes */
+.categoryCheckboxGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #444;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* Admin List */
+.adminBlogList {
+    max-width: 800px;
+    margin: 3rem auto;
+    background: rgb(50, 50, 50);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.listTitle {
+    color: #ffcc00;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.adminBlogItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+.adminActions {
+    display: flex;
+    gap: 10px;
+}
+
+.editBtn,
+.deleteBtn,
+.cancelBtn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.editBtn {
+    background: #2196F3;
+    color: white;
+}
+
+.deleteBtn {
+    background: #f44336;
+    color: white;
+}
+
+.cancelBtn {
+    background: #777;
+    color: white;
+    margin-left: 10px;
+}
+
+.formActions {
+    display: flex;
+    align-items: center;
+}
+
+.adminDashboard {
+    padding: 2rem 5rem;
+    min-height: 80vh;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    padding-top: 100px;
+}
+
+.adminContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgb(50, 50, 50);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.adminTitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #ffcc00;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #ddd;
+}
+
+.formGroup input,
+.formGroup textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: rgb(30, 30, 30);
+    color: white;
+    font-size: 1rem;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: #ffcc00;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 1rem;
+    background: white;
+    color: rgb(30, 30, 30);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submitBtn:hover {
+    background: #ffcc00;
+}
+
+.message {
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.message.success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+    border: 1px solid #4caf50;
+}
+
+.message.error {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+    border: 1px solid #f44336;
+}
+
+@media screen and (max-width: 720px) {
+    .adminDashboard {
+        padding: 2rem;
+        padding-top: 80px;
+    }
+}

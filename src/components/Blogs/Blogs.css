@@ -1,0 +1,189 @@
+.blogMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+
+.blogViews {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.blogCardImg {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.blogsPage {
+    padding: 2rem 5rem;
+    min-height: 80vh;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    padding-top: 100px;
+}
+
+.blogsTitle {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.searchBar {
+    padding: 0.8rem;
+    width: 300px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+}
+
+.categoryNav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.categoryNav button {
+    padding: 0.5rem 1rem;
+    background: #444;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.categoryNav button:hover,
+.categoryNav button.active {
+    background: #ffcc00;
+    color: black;
+}
+
+/* Grid Layout */
+.blogList {
+    display: grid;
+    /* Adjusted minmax to ~250px to allow fitting 4 items on standard desktop widths */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+}
+
+.blogsContainer {
+    display: none;
+    /* Deprecated flex container */
+}
+
+.blogCard {
+    background: rgb(50, 50, 50);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    /* Prevent single card from stretching too wide */
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    /* Center if it's smaller than the grid cell */
+}
+
+.blogCard:hover {
+    transform: translateY(-5px);
+}
+
+.blogCardCategories {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.blogCategoryPill {
+    color: #ffcc00;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 1px solid #ffcc00;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.blogCardTitle {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.blogCardAuthor {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.blogCardContent {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.readMoreBtn {
+    background: white;
+    color: rgb(30, 30, 30);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.readMoreBtn:hover {
+    background: #ffcc00;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+}
+
+.pagination button {
+    padding: 0.5rem 1rem;
+    background: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.pagination button:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 720px) {
+    .blogsPage {
+        padding: 2rem;
+        padding-top: 80px;
+    }
+}
