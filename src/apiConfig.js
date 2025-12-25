@@ -5,6 +5,6 @@ export const getApiUrl = () => {
     return "http://localhost:5000";
   } else {
     // This needs to be replaced with your actual deployed backend URL (e.g., from Render)
-    return "https://blog-backend-five-alpha.vercel.app"; 
+    return "https://blog-backend-clean.vercel.app"; 
   }
 };
