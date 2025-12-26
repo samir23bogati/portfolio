@@ -30,6 +30,7 @@ const AdminDashboard = () => {
   const fetchBlogs = async () => {
     try {
       const baseUrl = getApiUrl();
+      console.log("!!! ADMIN DASHBOARD USING URL:", baseUrl); // DEBUG LOG
       const response = await axios.get(`${baseUrl}/api/blogs`);
       // Since API returns object with blogs array now
       setBlogs(response.data.blogs || response.data); 

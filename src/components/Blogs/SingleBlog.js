@@ -82,7 +82,17 @@ const SingleBlog = () => {
           )}
         </div>
 
-        {blog.image && <img src={`${getApiUrl()}${blog.image}`} alt={blog.title} className="blogImg" />}
+        {blog.image && (
+          <img 
+            src={
+              blog.image.startsWith('data:') || blog.image.startsWith('http') 
+                ? blog.image 
+                : `${getApiUrl()}${blog.image}`
+            } 
+            alt={blog.title} 
+            className="blogImg" 
+          />
+        )}
 
         {blog.sectionTwo && (
           <div className="blogContent sectionTwo">

@@ -97,7 +97,17 @@ const Blogs = () => {
         ) : (
           blogs.map((blog) => (
             <div key={blog._id} className="blogCard">
-              {blog.image && <img src={`${getApiUrl()}${blog.image}`} alt={blog.title} className="blogCardImg" />}
+              {blog.image && (
+                <img 
+                  src={
+                    blog.image.startsWith('data:') || blog.image.startsWith('http') 
+                      ? blog.image 
+                      : `${getApiUrl()}${blog.image}`
+                  } 
+                  alt={blog.title} 
+                  className="blogCardImg" 
+                />
+              )}
               <h3 className="blogCardTitle">{blog.title}</h3>
               <div className="blogMeta">
                 <span className="blogViews">👁️ {blog.views}</span>
