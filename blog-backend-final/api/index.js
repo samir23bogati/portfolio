@@ -8,11 +8,30 @@ import path from "path";
 dotenv.config();
 const app = express();
 
-app.use(cors({
-  origin: ["https://www.samirbogati.com.np", "https://samirbogati.com.np", "https://blog-backend-final-phi.vercel.app", "http://localhost:3000", "http://localhost:3001"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+const allowedOrigins = [
+  "https://www.samirbogati.com.np",
+  "https://samirbogati.com.np",
+  "https://blog-backend-final-phi.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:3001"
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (Postman, curl, server-to-server)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+  })
+);
 app.use(express.json());
 
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
@@ -24,25 +43,27 @@ app.get("/", (req, res) => {
 });
 
 const connectDB = async () => {
-  if (mongoose.connections[0].readyState) return;
-  await mongoose.connect(process.env.MONGO_URL || process.env.MONGO_URI);
+  if (mongoose.connection.readyState >= 1) return;
+
+  await mongoose.connect(
+    process.env.MONGO_URL || process.env.MONGO_URI,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+  );
 };
 
-// Enable pre-flight requests for all routes
-app.options('*', cors());
 
-// Vercel serverless handler
 export default async function handler(req, res) {
   try {
     await connectDB();
-  } catch (e) {
-    console.error("Database connection failed:", e);
-    // Return error with CORS headers so frontend doesn't just see a network error
-    res.setHeader("Access-Control-Allow-Origin", "https://www.samirbogati.com.np");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.status(500).json({ error: "Database connection failed", details: e.message });
-    return;
+    return app(req, res);
+  } catch (error) {
+    console.error("Database connection failed:", error);
+    return res.status(500).json({
+      error: "Database connection failed",
+      details: error.message
+    });
   }
-  return app(req, res);
 }
