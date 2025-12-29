@@ -28,8 +28,21 @@ const connectDB = async () => {
   await mongoose.connect(process.env.MONGO_URL || process.env.MONGO_URI);
 };
 
+// Enable pre-flight requests for all routes
+app.options('*', cors());
+
 // Vercel serverless handler
 export default async function handler(req, res) {
-  await connectDB();
+  try {
+    await connectDB();
+  } catch (e) {
+    console.error("Database connection failed:", e);
+    // Return error with CORS headers so frontend doesn't just see a network error
+    res.setHeader("Access-Control-Allow-Origin", "https://www.samirbogati.com.np");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.status(500).json({ error: "Database connection failed", details: e.message });
+    return;
+  }
   return app(req, res);
 }
