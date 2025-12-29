@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: ["https://www.samirbogati.com.np", "http://localhost:3000", "http://localhost:3001"],
+  origin: ["https://www.samirbogati.com.np", "https://samirbogati.com.np", "http://localhost:3000", "http://localhost:3001"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
