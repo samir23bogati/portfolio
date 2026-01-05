@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
@@ -9,11 +9,7 @@ const SingleBlog = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
 
-  useEffect(() => {
-    fetchBlog();
-  }, [id]);
-
-  const fetchBlog = async () => {
+  const fetchBlog = useCallback(async () => {
     try {
       const baseUrl = getApiUrl();
       const response = await axios.get(`${baseUrl}/api/blogs/${id}`);
@@ -21,7 +17,11 @@ const SingleBlog = () => {
     } catch (error) {
       console.error("Error fetching blog:", error);
     }
-  };
+  }, [id]); // Add id as dependency
+
+  useEffect(() => {
+    fetchBlog();
+  }, [fetchBlog]); // Now fetchBlog is in the dependency array
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -98,8 +98,7 @@ const SingleBlog = () => {
           <div className="blogContent sectionTwo">
             {blog.sectionTwo.split('\n').map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
-            ))
-          }
+            ))}
           </div>
         )}
       </div>

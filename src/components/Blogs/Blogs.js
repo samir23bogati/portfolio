@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { getApiUrl } from "../../apiConfig"; 
+import { getApiUrl } from "../../apiConfig";
 import "./Blogs.css";
 
 const Blogs = () => {
-  const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState([]);          // always array
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(1); // always number
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -22,25 +22,21 @@ const Blogs = () => {
   const fetchBlogs = async () => {
     setLoading(true);
     setError("");
+
     try {
       const baseUrl = getApiUrl();
       const response = await axios.get(`${baseUrl}/api/blogs`, {
-        params: { search, category, page, limit: 9 }
+        params: { search, category, page, limit: 9 },
       });
 
-      // Handle different API response formats
-      if (response.data) {
-        if (Array.isArray(response.data)) {
-          setBlogs(response.data);
-          setTotalPages(1);
-        } else if (Array.isArray(response.data.blogs)) {
-          setBlogs(response.data.blogs);
-          setTotalPages(response.data.totalPages || 1);
-        } else {
-          console.warn("Unexpected API response:", response.data);
-          setBlogs([]);
-          setTotalPages(1);
-        }
+      const data = response?.data;
+
+      if (Array.isArray(data)) {
+        setBlogs(data);
+        setTotalPages(1);
+      } else if (Array.isArray(data?.blogs)) {
+        setBlogs(data.blogs);
+        setTotalPages(Number(data.totalPages) || 1);
       } else {
         setBlogs([]);
         setTotalPages(1);
@@ -67,11 +63,17 @@ const Blogs = () => {
   };
 
   const handlePageChange = (newPage) => {
-    if (newPage > 0 && newPage <= totalPages) setPage(newPage);
+    if (newPage > 0 && newPage <= totalPages) {
+      setPage(newPage);
+    }
   };
 
   const formatDate = (dateString) => {
+    if (!dateString) return "";
+
     const date = new Date(dateString);
+    if (isNaN(date)) return "";
+
     const day = date.getDate();
     const month = date.toLocaleString("default", { month: "short" });
     const year = date.getFullYear();
@@ -93,7 +95,10 @@ const Blogs = () => {
     <section className="blogsPage">
       <Helmet>
         <title>Blogs - Samir Bogati</title>
-        <meta name="description" content="My professional blogs on tech, travel, and more." />
+        <meta
+          name="description"
+          content="My professional blogs on tech, travel, and more."
+        />
       </Helmet>
 
       <h2 className="pageTitle">My Blogs</h2>
@@ -106,6 +111,7 @@ const Blogs = () => {
           onChange={handleSearchChange}
           className="searchBar"
         />
+
         <div className="categoryNav">
           <button className={category === "" ? "active" : ""} onClick={() => handleCategoryChange("")}>All</button>
           <button className={category === "Travel & Trekking" ? "active" : ""} onClick={() => handleCategoryChange("Travel & Trekking")}>Travel</button>
@@ -119,45 +125,80 @@ const Blogs = () => {
         <p>Loading blogs...</p>
       ) : error ? (
         <p className="error">{error}</p>
-      ) : (blogs?.length === 0 ? (
+      ) : Array.isArray(blogs) && blogs.length === 0 ? (
         <p className="noBlogs">No blogs found.</p>
       ) : (
         <div className="blogList">
-          {blogs.map((blog) => (
-            <div key={blog._id} className="blogCard">
-              {blog.image && (
-                <img
-                  src={
-                    blog.image.startsWith("data:") || blog.image.startsWith("http")
-                      ? blog.image
-                      : `${getApiUrl()}${blog.image}`
-                  }
-                  alt={blog.title}
-                  className="blogCardImg"
-                />
-              )}
-              <h3 className="blogCardTitle">{blog.title}</h3>
-              <div className="blogMeta">
-                <span className="blogViews">👁️ {blog.views}</span>
-                <span className="blogDate">{formatDate(blog.createdAt)}</span>
-              </div>
-              <div className="blogCardCategories">
-                {Array.isArray(blog.category) ? blog.category.map((cat, idx) => (
-                  <span key={idx} className="blogCategoryPill">{cat}</span>
-                )) : <span className="blogCategoryPill">{blog.category}</span>}
-              </div>
-              <p className="blogCardContent">{(blog.sectionOne || blog.content || "").substring(0, 100)}...</p>
-              <Link to={`/blogs/${blog._id}`} className="readMoreBtn">Read More</Link>
-            </div>
-          ))}
-        </div>
-      ))}
+          {Array.isArray(blogs) &&
+            blogs.map((blog) => (
+              <div key={blog?._id} className="blogCard">
+                {blog?.image && (
+                  <img
+                    src={
+                      blog.image.startsWith("data:") ||
+                      blog.image.startsWith("http")
+                        ? blog.image
+                        : `${getApiUrl()}${blog.image}`
+                    }
+                    alt={blog?.title || "Blog image"}
+                    className="blogCardImg"
+                  />
+                )}
 
-      <div className="pagination">
-        <button disabled={page === 1} onClick={() => handlePageChange(page - 1)}>Prev</button>
-        <span>Page {page} of {totalPages}</span>
-        <button disabled={page === totalPages} onClick={() => handlePageChange(page + 1)}>Next</button>
-      </div>
+                <h3 className="blogCardTitle">{blog?.title}</h3>
+
+                <div className="blogMeta">
+                  <span className="blogViews">👁️ {blog?.views || 0}</span>
+                  <span className="blogDate">
+                    {formatDate(blog?.createdAt)}
+                  </span>
+                </div>
+
+                <div className="blogCardCategories">
+                  {Array.isArray(blog?.category) ? (
+                    blog.category.map((cat, idx) => (
+                      <span key={idx} className="blogCategoryPill">
+                        {cat}
+                      </span>
+                    ))
+                  ) : (
+                    <span className="blogCategoryPill">
+                      {blog?.category}
+                    </span>
+                  )}
+                </div>
+
+                <p className="blogCardContent">
+                  {(blog?.sectionOne || blog?.content || "").substring(0, 100)}...
+                </p>
+
+                <Link to={`/blogs/${blog?._id}`} className="readMoreBtn">
+                  Read More
+                </Link>
+              </div>
+            ))}
+        </div>
+      )}
+
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            disabled={page === 1}
+            onClick={() => handlePageChange(page - 1)}
+          >
+            Prev
+          </button>
+
+          <span>Page {page} of {totalPages}</span>
+
+          <button
+            disabled={page === totalPages}
+            onClick={() => handlePageChange(page + 1)}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </section>
   );
 };
