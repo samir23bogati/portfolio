@@ -9,12 +9,11 @@ const Intro = () => {
       <div className="introContent">
         <span className="hello">Hello,</span>
         <span className="introText">
-          I'm <span className="introName">Samir Bogati</span>
+          I'm <span className="introName">Er. Samir Bogati</span>
           <br />
           Computer Engineer{" "} 
           <p className="introPara">
-            Passionate about building scalable applications <br />and delivering
-        seamless user experiences.
+            Crafting scalable mobile & web applications with modern technologies  <br />and seamless user experiences.
           </p>
         </span>
        <Link
@@ -25,7 +24,7 @@ const Intro = () => {
         >
           <button className="btn">
             <img src={btnImg} alt="Hire ME" className="btnImg" />
-            Hire Me
+            Contact Me
           </button>
         </Link>
       </div>
