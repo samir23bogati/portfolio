@@ -37,12 +37,15 @@
 }
 
 .skillCard {
-  background: linear-gradient(145deg, #1e1e1e, #292929);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1.5rem;
   overflow: hidden;
   padding: 1rem;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   opacity: 0;
   transform: translateY(40px);
   animation: fadeInUp 1s forwards;
@@ -50,7 +53,8 @@
 
 .skillCard:hover {
   transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .skillCardImg {

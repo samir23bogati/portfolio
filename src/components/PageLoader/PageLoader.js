@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./PageLoader.css";
-
-/* Module-level flag: resets on browser refresh, survives React route navigation */
-let loaderShown = false;
 
 const PageLoader = ({ onDone }) => {
   const [phase, setPhase] = useState("entering"); // entering → visible → leaving → gone
+  const complete = useRef(false);
 
   useEffect(() => {
-    if (loaderShown) {
+    /*
+     * StrictMode in dev mounts → unmounts → remounts the component.
+     * We track completion via a ref (preserved across the simulated remount).
+     * On the remount the ref is still false (timers were cleared in cleanup),
+     * so the animation plays once correctly. After it finishes, complete = true,
+     * and any future effect runs (e.g. hypothetical re-mounts) skip immediately.
+     */
+    if (complete.current) {
       setPhase("gone");
       onDone?.();
       return;
     }
-    loaderShown = true;
 
-    /* hold for 1.6s then slide up */
     const holdTimer = setTimeout(() => setPhase("leaving"), 1600);
-
-    /* tell the parent it's done after the exit animation (~700ms) */
     const doneTimer = setTimeout(() => {
+      complete.current = true;
       setPhase("gone");
       onDone?.();
     }, 2300);
@@ -28,7 +30,7 @@ const PageLoader = ({ onDone }) => {
       clearTimeout(holdTimer);
       clearTimeout(doneTimer);
     };
-  }, [onDone]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (phase === "gone") return null;
 

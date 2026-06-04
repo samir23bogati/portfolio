@@ -1,3 +1,4 @@
+/* ── Section ── */
 #intro {
   height: calc(100vh - 4rem);
   width: 100vw;
@@ -7,136 +8,22 @@
   position: relative;
 }
 
+/* ── Left column: terminal lives here ── */
 .introContent {
-  height: 100vh;
-  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 46%;
+  height: 100%;
   padding: 2rem;
-  font-size: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-sizing: border-box;
-  color: #fff;
   z-index: 2;
-  position: relative;
+  box-sizing: border-box;
 }
 
-/* ── Default state: elements visible (for navigate-back) ── */
-.intro-el {
-  opacity: 1;
-  transform: none;
-}
-
-/* ── Waiting state: hide all elements before animation fires ── */
-#intro:not(.intro-animate):not(.intro-done) .intro-el {
-  opacity: 0;
-  transform: translateX(-40px);
-}
-
-#intro:not(.intro-animate):not(.intro-done) .intro-bg {
-  opacity: 0;
-  transform: translateX(60px) scaleX(-1);
-}
-
-/* ── Animate state: staggered entrance ── */
-#intro.intro-animate .intro-el {
-  animation-name: introSlideIn;
-  animation-duration: 0.75s;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  animation-fill-mode: both;
-}
-
-#intro.intro-animate .el-1 { animation-delay: 0s; }
-#intro.intro-animate .el-2 { animation-delay: 0.18s; }
-#intro.intro-animate .el-3 { animation-delay: 0.34s; }
-#intro.intro-animate .el-4 { animation-delay: 0.5s; }
-
-#intro.intro-animate .intro-bg {
-  animation: introBgSlide 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
-}
-
-/* ── Done state: show final state instantly ── */
-#intro.intro-done .intro-el {
-  opacity: 1;
-  transform: none;
-}
-
-#intro.intro-done .intro-bg {
-  opacity: 1;
-}
-
-@keyframes introSlideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes introBgSlide {
-  from {
-    opacity: 0;
-    transform: translateX(60px) scaleX(-1);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) scaleX(-1);
-  }
-}
-
-/* ── Typography ── */
-.hello {
-  font-size: 1.8rem;
-  font-weight: 100;
-  display: block;
-}
-
-.introName {
-  color: #ff4f5b;
-  font-weight: bold;
-  font-size: 3rem;
-}
-
-.introPara {
-  font-size: 1.2rem;
-  font-weight: 380;
-  letter-spacing: 1px;
-  max-width: 80%;
-  margin-top: 1rem;
-  line-height: 1.6;
-  display: block;
-}
-
-/* ── Button ── */
-.btn {
-  background: white;
-  margin: 1rem 0;
-  padding: 0.78rem 1.5rem;
-  border: none;
-  border-radius: 2rem;
-  color: #fff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease;
-}
-
-.btn:hover {
-  background: #e73c4f;
-}
-
-.btnImg {
-  object-fit: cover;
-  margin-right: 0.5rem;
-  height: 2rem;
-}
-
-/* ── Background image ── */
+/* ── Profile image ── */
 .bg {
   position: absolute;
   top: 0;
@@ -149,25 +36,329 @@
   pointer-events: none;
 }
 
-/* ── Responsive ── */
+/* ═══════════════════════════════════
+   ENTRANCE ANIMATIONS
+═══════════════════════════════════ */
+
+.intro-el { opacity: 1; transform: none; }
+
+/* Waiting: hidden before first animation fires */
+#intro:not(.intro-animate):not(.intro-done) .el-3 {
+  opacity: 0;
+  transform: translateX(-28px) scaleY(0.94);
+}
+
+#intro:not(.intro-animate):not(.intro-done) .intro-bg {
+  opacity: 0;
+  transform: translateX(60px) scaleX(-1);
+}
+
+/* Animate */
+#intro.intro-animate .el-3 {
+  animation: terminalBoot 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+#intro.intro-animate .intro-bg {
+  animation: introBgSlide 1s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+
+/* Done (navigate-back): instant final state */
+#intro.intro-done .intro-el  { opacity: 1; transform: none; }
+#intro.intro-done .intro-bg  { opacity: 1; }
+
+@keyframes terminalBoot {
+  0%   { opacity: 0; transform: translateX(-28px) scaleY(0.94); filter: blur(3px); }
+  55%  { opacity: 1; transform: translateX(2px)   scaleY(1);    filter: blur(0);   }
+  72%  { opacity: 0.88; transform: translateX(-1px) scaleY(1); }
+  88%  { opacity: 1;    transform: translateX(0)   scaleY(1); }
+  100% { opacity: 1;    transform: translateX(0)   scaleY(1); }
+}
+
+@keyframes introBgSlide {
+  from { opacity: 0; transform: translateX(60px) scaleX(-1); }
+  to   { opacity: 1; transform: translateX(0)    scaleX(-1); }
+}
+
+/* ═══════════════════════════════════
+   TERMINAL CHROME
+═══════════════════════════════════ */
+
+.terminal {
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#1e1e2e, #1a1a28) padding-box,
+    linear-gradient(135deg, rgba(255,81,47,0.55), rgba(221,36,118,0.55)) border-box;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255,255,255,0.03);
+  animation: terminalGlow 4s ease-in-out infinite;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scanline overlay — futuristic CRT feel */
+.terminal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.055) 3px,
+    rgba(0, 0, 0, 0.055) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+  border-radius: 12px;
+}
+
+@keyframes terminalGlow {
+  0%,100% { box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 20px rgba(255,81,47,0.05); }
+  50%     { box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 38px rgba(255,81,47,0.13); }
+}
+
+/* ── macOS header ── */
+.terminal-hdr {
+  background: #13131f;
+  padding: 0.68rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+
+.t-dots { display: flex; gap: 6px; align-items: center; }
+
+.t-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.terminal:hover .t-dot            { transform: scale(1.12); }
+.terminal:hover .t-red            { filter: brightness(1.2) drop-shadow(0 0 5px #ff5f57); }
+.terminal:hover .t-yellow         { filter: brightness(1.2) drop-shadow(0 0 5px #ffbd2e); }
+.terminal:hover .t-green          { filter: brightness(1.2) drop-shadow(0 0 5px #28c840); }
+
+.t-red    { background: #ff5f57; }
+.t-yellow { background: #ffbd2e; }
+.t-green  { background: #28c840; }
+
+.t-filename {
+  color: #6272a4;
+  font-size: 0.72rem;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: 0.2px;
+}
+
+/* ── VS Code file tab ── */
+.terminal-tabs {
+  background: #13131f;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 1rem;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.t-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.36rem 0.8rem;
+  color: #cdd6f4;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.74rem;
+  border-bottom: 2px solid #cba6f7;
+  opacity: 0.88;
+  letter-spacing: 0.2px;
+}
+
+.t-badge {
+  background: #f9e2af;
+  color: #13131f;
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: monospace;
+  letter-spacing: 0.5px;
+}
+
+/* ── Code area ── */
+.terminal-code {
+  padding: 0.8rem 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.terminal-code::-webkit-scrollbar { width: 3px; }
+.terminal-code::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+}
+
+.t-line {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.1rem 1rem;
+  line-height: 1.72;
+  min-height: 1.5rem;
+  border-left: 2px solid transparent;
+  transition: background 0.15s ease;
+}
+
+/* Highlight the currently-typing line */
+.t-line-active {
+  background: rgba(203, 166, 247, 0.04);
+  border-left-color: rgba(203, 166, 247, 0.35);
+}
+
+.t-lnum {
+  color: #3d4060;
+  width: 1.5rem;
+  text-align: right;
+  margin-right: 1.1rem;
+  user-select: none;
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  padding-top: 0.06rem;
+  transition: color 0.15s ease;
+}
+
+.t-line-active .t-lnum { color: #6272a4; }
+
+.t-content {
+  color: #cdd6f4;
+  white-space: pre;
+  flex: 1;
+}
+
+/* Syntax colors — Catppuccin Mocha */
+.tc-kw   { color: #cba6f7; }
+.tc-str  { color: #a6e3a1; }
+.tc-bool { color: #fab387; }
+.tc-num  { color: #f38ba8; }
+.tc-fn   { color: #89dceb; }
+.tc-prop { color: #89b4fa; }
+.tc-id   { color: #cdd6f4; }
+.tc-pun  { color: #89dceb; }
+.tc-op   { color: #cdd6f4; }
+.tc-cmt  { color: #6272a4; font-style: italic; }
+
+/* Blinking cursor */
+.t-cursor {
+  display: inline-block;
+  width: 2px;
+  background: transparent;
+  color: transparent;
+  height: 1em;
+  vertical-align: text-bottom;
+  transition: background 0.08s;
+  border-radius: 1px;
+}
+
+.t-cursor.on { background: #cba6f7; }
+
+/* Shell output (kept for compatibility) */
+.t-prompt { color: #a6e3a1; }
+.t-output { color: #cdd6f4; }
+
+/* ── VS Code status bar ── */
+.terminal-statusbar {
+  background: #13131f;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 0.28rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.64rem;
+  flex-shrink: 0;
+  gap: 0.5rem;
+}
+
+.sb-left,
+.sb-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sb-item { color: #3d4060; letter-spacing: 0.2px; }
+.sb-branch { color: #cba6f7; font-weight: 500; }
+.sb-lang   { color: #6272a4; }
+
+/* ═══════════════════════════════════
+   HERO TERMINAL SIZE
+═══════════════════════════════════ */
+
+.hero-terminal { font-size: 0.84rem; width: 100%; }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+
+/* Tablet: shrink left column */
+@media screen and (max-width: 1024px) {
+  .introContent { width: 50%; }
+  .hero-terminal { font-size: 0.8rem; }
+}
+
 @media screen and (max-width: 840px) {
-  .bg { width: 80%; right: -10vw; }
-  .introContent { font-size: 2rem; }
-  .hello { font-size: 1.5rem; }
-  .introPara { font-size: 0.875rem; }
+  .bg { width: 75%; right: -8vw; }
+  .introContent { width: 56%; padding: 1.5rem; }
+  .hero-terminal { font-size: 0.76rem; }
+  .t-lnum { width: 1.2rem; margin-right: 0.8rem; }
 }
 
-@media screen and (max-width: 647px) {
-  .introContent { font-size: 1.6rem; }
-  .hello { font-size: 1rem; }
-  .introPara { font-size: 0.61rem; }
-  .bg { width: 90%; right: -15vw; }
+/* Stack vertically on tablet/mobile — terminal goes full width */
+@media screen and (max-width: 700px) {
+  #intro {
+    height: auto;
+    min-height: calc(100vh - 4rem);
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .introContent {
+    position: relative;
+    width: 92%;
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Profile photo fades to a subtle background */
+  .bg {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    opacity: 0.07;
+    transform: scaleX(-1);
+  }
+
+  .hero-terminal { font-size: 0.78rem; }
 }
 
-@media screen and (max-width: 576px) {
-  .introContent { font-size: 1.4rem; }
-  .hello { font-size: 0.85rem; }
-  .introPara { font-size: 0.55rem; }
-  .bg { width: 96%; right: -18vw; }
-  .btn { font-size: 1rem; }
+@media screen and (max-width: 480px) {
+  .introContent { width: 96%; padding: 1.5rem 0.75rem; }
+  .hero-terminal { font-size: 0.72rem; }
+  .t-lnum { display: none; }
+  .t-line { padding: 0.08rem 0.75rem; }
+  .terminal-statusbar { font-size: 0.58rem; }
+  .t-filename { font-size: 0.65rem; }
+}
+
+@media screen and (max-width: 360px) {
+  .hero-terminal { font-size: 0.66rem; }
 }

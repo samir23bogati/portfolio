@@ -1,5 +1,5 @@
 #contactPage {
-    min-height: 100vh;
+  min-height: 100vh;
   width: 100%;
   padding: 2rem;
   text-align: center;
@@ -10,11 +10,13 @@
   color: white;
   animation: fadeIn 1.2s ease-in-out;
 }
-.contactPageTitle{
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
+
+.contactPageTitle {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
+
 .clientDesc,
 .contactDesc {
   font-weight: 300;
@@ -23,150 +25,256 @@
   margin-bottom: 1rem;
   color: #ccc;
 }
+
 .clientImgs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin: 1.5rem 0;
-    justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+  justify-items: center;
 }
+
 .clientImg {
-    width: 100%;
-    height: auto;
-    max-width: 10rem;
-    object-fit: contain;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    background: #f8f8f8;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  height: auto;
+  max-width: 10rem;
+  object-fit: contain;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: #f8f8f8;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-  .clientImg:hover {
-    transform: scale(1.05);
-  }
-#clients{
-    padding: 1.5rem;
+
+.clientImg:hover {
+  transform: scale(1.05);
 }
+
+#clients {
+  padding: 1.5rem;
+}
+
 .contactDesc {
-    padding: 1rem;
-    font-size:medium;
-    font-weight :300;
+  padding: 1rem;
+  font-size: medium;
+  font-weight: 300;
 }
 
 .contactForm {
-    margin: 2rem 0;
-    padding: 2rem;
-    background: #222;
-    border-radius: 1rem;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    max-width: 40rem;
+  margin: 2rem 0 1.5rem;
+  padding: 2rem;
+  background: #222;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 40rem;
 }
 
 .name, .email, .msg {
-    font-size: 1rem;
-    width: 100%;
-    margin: 0.75rem 0;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    color: white;
-    background: #333;
+  font-size: 1rem;
+  width: 100%;
+  margin: 0.75rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  background: #333;
 }
+
 .submitBtn {
-    padding: 0.75rem 3rem;
-    background: #fff;
-    color: #000;
-    border: 2px solid red;
-    border-radius: 0.5rem;
-    margin-top: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  padding: 0.75rem 3rem;
+  background: #fff;
+  color: #000;
+  border: 2px solid red;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
+
 .submitBtn:hover {
-    background: red;
-    color: #fff;
-    border-color: #fff;
+  background: red;
+  color: #fff;
+  border-color: #fff;
 }
-.links{
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+
+/* ── Social Links Section ── */
+.socialSection {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 90%;
+  max-width: 40rem;
 }
-.link{
-    object-fit: cover;
-    height:2.5rem;
-    width:2.5rem;
-    transition: transform 0.3s ease;
+
+.socialHeading {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #555;
 }
-.hover-bounce:hover {
-    transform: scale(1.2);
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-/* Mobile Responsive */
+
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+/* Base pill button */
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  color: #a0a8b8;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: color 0.28s ease, border-color 0.28s ease,
+              box-shadow 0.28s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.28s ease;
+  /* Staggered fade-in on load */
+  animation: socialIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Shimmer sweep on hover */
+.socialBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.07) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.socialBtn:hover::before {
+  transform: translateX(100%);
+}
+
+.socialBtn:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* Platform-specific accent colors on hover */
+.social-fb:hover {
+  color: #4a9fff;
+  border-color: rgba(74, 159, 255, 0.55);
+  box-shadow: 0 6px 24px rgba(24, 119, 242, 0.25),
+              0 0 0 1px rgba(74, 159, 255, 0.15) inset;
+}
+
+.social-ig:hover {
+  color: #f77ab8;
+  border-color: rgba(225, 48, 108, 0.55);
+  box-shadow: 0 6px 24px rgba(225, 48, 108, 0.25),
+              0 0 0 1px rgba(247, 122, 184, 0.15) inset;
+}
+
+.social-li:hover {
+  color: #5aafdf;
+  border-color: rgba(0, 119, 181, 0.55);
+  box-shadow: 0 6px 24px rgba(0, 119, 181, 0.25),
+              0 0 0 1px rgba(90, 175, 223, 0.15) inset;
+}
+
+.social-yt:hover {
+  color: #ff6b6b;
+  border-color: rgba(255, 0, 0, 0.5);
+  box-shadow: 0 6px 24px rgba(255, 0, 0, 0.22),
+              0 0 0 1px rgba(255, 107, 107, 0.15) inset;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.socialBtn:hover .socialIcon {
+  opacity: 1;
+}
+
+.socialLabel {
+  line-height: 1;
+}
+
+@keyframes socialIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Keyframes ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
-    .contactPageTitle {
-        font-size: 2.2rem;
-    }
+  .contactPageTitle { font-size: 2.2rem; }
 
-    .clientImg {
-        width: 40%;
-    }
-    .clientImgs {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .clientImg { width: 40%; }
+  .clientImgs { grid-template-columns: repeat(2, 1fr); }
 
-    .contactDesc {
-        font-size: 0.95rem;
-    }
+  .contactDesc { font-size: 0.95rem; }
 
-    .name,
-    .email,
-    .msg {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-    }
+  .name, .email, .msg {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
 
-    .submitBtn {
-        padding: 0.6rem 2rem;
-      }
-    
-      .link {
-        height: 2rem;
-        width: 2rem;
-      }
-    }
+  .submitBtn { padding: 0.6rem 2rem; }
+
+  .socialBtn {
+    font-size: 0.78rem;
+    padding: 0.55rem 1rem;
+  }
+}
 
 @media (max-width: 480px) {
-    .contactPageTitle {
-        font-size: 2rem;
-    }
+  .contactPageTitle { font-size: 2rem; }
 
-    .clientImg {
-        width: 100%;
-    }
-    .clientImgs {
-        grid-template-columns: 1fr;
-    }
+  .clientImg { width: 100%; }
+  .clientImgs { grid-template-columns: 1fr; }
 
-    .contactDesc {
-        font-size: 0.85rem;
-    }
+  .contactDesc { font-size: 0.85rem; }
 
-    .submitBtn {
-        padding: 0.5rem 1.8rem;
-    }
+  .submitBtn { padding: 0.5rem 1.8rem; }
+
+  .socialLinks { gap: 0.6rem; }
+
+  .socialBtn {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.9rem;
+    gap: 0.45rem;
+  }
 }

@@ -71,9 +71,11 @@
 
 /* ── Card ── */
 .productCard {
-  background: rgb(36, 36, 36);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -82,8 +84,8 @@
 
 .productCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-  border-color: rgba(var(--card-accent, 255, 81, 47), 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* ── Card Top Banner ── */
