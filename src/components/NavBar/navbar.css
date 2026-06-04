@@ -1,197 +1,211 @@
-/* Navbar Styling */
+/* ── Navbar ── */
 .navbar {
-    background: rgb(30,30,30,0.7);
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    height: 5rem;
-    width: 100vw;
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    z-index: 99;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  height: 5rem;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.5s ease forwards;
 }
+
 @keyframes slideDown {
-    0% {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .navbar {
-    animation: slideDown 0.6s ease forwards;
-  }
-  
-  
-/* Logo with a smooth bounce effect */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Logo ── */
+@keyframes logoBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
 }
 
 .logo {
-    object-fit: cover;
-    height: 3rem;
-    width: 4rem;
-    animation: bounce 2s infinite;
-    transition: transform 0.3s;
+  object-fit: cover;
+  height: 2.8rem;
+  width: 3.6rem;
+  border-radius: 8px;
+  animation: logoBounce 2.4s ease-in-out infinite;
+  transition: filter 0.3s;
 }
+
 .logo:hover {
-    animation: bounce 1s infinite;
-  }
+  animation-duration: 1s;
+  filter: brightness(1.15);
+}
 
-/* Desktop Menu Items */
+/* ── Desktop Menu ── */
+.desktopMenu {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
 .desktopMenuListItem {
-    margin: 1rem;
-    cursor: pointer;
-    position: relative;
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
-}
-.desktopMenuListItem::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 0%;
-    height: 2px;
-    background: linear-gradient(90deg, #ff512f, #dd2476);
-    transition: width 0.3s ease;
-  }
-  
-  .desktopMenuListItem:hover::after {
-    width: 100%;
-  }
-.desktopMenuListItem:hover {
-    color: rgb(255, 0, 0);
-    padding-bottom: 0.3rem;
-    border-bottom: 2px solid rgb(255, 8, 0);
+  position: relative;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.25s;
+  text-decoration: none;
 }
 
-/* Attractive Contact Button */
+.desktopMenuListItem::after {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 2px;
+  height: 2px;
+  background: linear-gradient(90deg, #ff512f, #dd2476);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  border-radius: 2px;
+}
+
+.desktopMenuListItem:hover {
+  color: white;
+}
+
+.desktopMenuListItem:hover::after,
+.desktopMenuListItem.active::after {
+  transform: scaleX(1);
+}
+
+/* ── Contact Button ── */
 .desktopMenuBtn {
-    background: linear-gradient(135deg, #ff512f, #dd2476);
-    color: white;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 1.5rem;
-    border-radius: 2rem;
-    height: 3.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 2rem;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s, opacity 0.25s;
+  white-space: nowrap;
 }
 
 .desktopMenuBtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(255, 81, 47, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 81, 47, 0.45);
+  opacity: 0.93;
 }
 
-/* Contact Image Animation */
 .desktopMenuImg {
-    object-fit: cover;
-    height: 3rem;
-    width: 3rem;
-    margin-right: 0.5rem;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s;
 }
 
 .desktopMenuBtn:hover .desktopMenuImg {
-    transform: rotate(15deg) scale(1.1);
+  transform: rotate(12deg) scale(1.08);
 }
 
-/* Mobile Menu Icon */
+/* ── Mobile Hamburger ── */
 .mobMenu {
-    display: none;
-    object-fit: cover;
-    height: 2.8rem;
-    cursor: pointer;
+  display: none;
+  height: 2.4rem;
+  width: 2.4rem;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-/* Mobile Menu Styling */
+.mobMenu:hover {
+  transform: scale(1.08);
+}
+
+/* ── Mobile Dropdown ── */
 .navMenu {
-    position: absolute;
-    top: 4rem;
-    right: 2rem;
-    z-index: 10;
-    display: none;
-    flex-direction: column;
-    padding: 0.5rem;
-    height: fit-content;
-    min-width: 15rem;
-    background-color: rgb(40,40,40);
-    border-radius: 1rem;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
-    backdrop-filter: blur(6px);
-    transform-origin: top right;
-    transform: scale(0.95);
+  display: none;
+  position: absolute;
+  top: calc(5rem + 0.5rem);
+  right: 5%;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  min-width: 200px;
+  background: rgba(28, 28, 28, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .navMenu.show {
-    display: flex;
-    animation: fadeIn 0.3s ease-in-out;
-    transform: scale(1);
+  display: flex;
+  animation: menuFadeIn 0.22s ease;
 }
 
-/* Mobile Menu Fade-in Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Mobile Menu List Items */
 .ListItem {
-    color: white;
-    padding: 0.7rem 3rem;
-    margin: 0.25rem;
-    font-size: 1rem;
-    font-weight: 500;
-    background: rgb(30,30,30);
-    border-radius: 5px;
-    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  text-decoration: none;
+  display: block;
 }
 
 .ListItem:hover {
-    background: rgb(50,50,50);
-    transform: scale(1.05);
+  background: rgba(255, 81, 47, 0.15);
+  color: white;
+  transform: translateX(4px);
 }
 
-/* Mobile Responsiveness */
-@media screen and (max-width: 720px) {
-    .mobMenu {
-        display: flex;
-    }
-    .desktopMenu {
-        display: none;
-    }
-    .desktopMenuBtn {
-        display: none;
-    }
+/* ── Breakpoints ── */
+@media screen and (max-width: 768px) {
+  .mobMenu { display: block; }
+  .desktopMenu { display: none; }
+  .desktopMenuBtn { display: none; }
+
+  .navbar {
+    padding: 0 4%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    height: 4.5rem;
+    padding: 0 4%;
+  }
+
+  .navMenu {
+    top: calc(4.5rem + 0.5rem);
+    right: 4%;
+    min-width: 180px;
+  }
+
+  .logo {
+    height: 2.4rem;
+    width: 3rem;
+  }
 }

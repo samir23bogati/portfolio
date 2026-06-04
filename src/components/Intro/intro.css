@@ -1,49 +1,121 @@
-#intro{
-    height:calc(100vh - 4rem);
-    width:100vw;
-    max-width: 75rem;
-    margin:0 auto;
-    overflow:hidden;
-    position: relative;
-}
-
-.introContent{
-    height: 100vh;
-    width:100vw ;
-    padding:2rem;
-    font-size: 3rem;
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    box-sizing: border-box;
-    color: #fff;
-  z-index: 2; 
+#intro {
+  height: calc(100vh - 4rem);
+  width: 100vw;
+  max-width: 75rem;
+  margin: 0 auto;
+  overflow: hidden;
   position: relative;
-  animation: fadeIn 2s ease-out; 
 }
 
-.hello{
-    font-size: 1.8rem;
-    font-weight: 100;
+.introContent {
+  height: 100vh;
+  width: 100vw;
+  padding: 2rem;
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  color: #fff;
+  z-index: 2;
+  position: relative;
 }
-.introName{
-    color: #ff4f5b;
-    font-weight: bold;
-    font-size: 3rem;
+
+/* ── Default state: elements visible (for navigate-back) ── */
+.intro-el {
+  opacity: 1;
+  transform: none;
 }
-.introPara{
-    font-size: 1.2rem;
-    font-weight: 380;
-    letter-spacing: 1px;
-    max-width: 80%;
-    margin-top: 1rem;
-    line-height: 1.6;
+
+/* ── Waiting state: hide all elements before animation fires ── */
+#intro:not(.intro-animate):not(.intro-done) .intro-el {
+  opacity: 0;
+  transform: translateX(-40px);
 }
-.btn{
-    background: white;
-    margin:1rem 0;
-    padding:0.78rem 1.5rem;
-    border: none;
+
+#intro:not(.intro-animate):not(.intro-done) .intro-bg {
+  opacity: 0;
+  transform: translateX(60px) scaleX(-1);
+}
+
+/* ── Animate state: staggered entrance ── */
+#intro.intro-animate .intro-el {
+  animation-name: introSlideIn;
+  animation-duration: 0.75s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+#intro.intro-animate .el-1 { animation-delay: 0s; }
+#intro.intro-animate .el-2 { animation-delay: 0.18s; }
+#intro.intro-animate .el-3 { animation-delay: 0.34s; }
+#intro.intro-animate .el-4 { animation-delay: 0.5s; }
+
+#intro.intro-animate .intro-bg {
+  animation: introBgSlide 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+/* ── Done state: show final state instantly ── */
+#intro.intro-done .intro-el {
+  opacity: 1;
+  transform: none;
+}
+
+#intro.intro-done .intro-bg {
+  opacity: 1;
+}
+
+@keyframes introSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes introBgSlide {
+  from {
+    opacity: 0;
+    transform: translateX(60px) scaleX(-1);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scaleX(-1);
+  }
+}
+
+/* ── Typography ── */
+.hello {
+  font-size: 1.8rem;
+  font-weight: 100;
+  display: block;
+}
+
+.introName {
+  color: #ff4f5b;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.introPara {
+  font-size: 1.2rem;
+  font-weight: 380;
+  letter-spacing: 1px;
+  max-width: 80%;
+  margin-top: 1rem;
+  line-height: 1.6;
+  display: block;
+}
+
+/* ── Button ── */
+.btn {
+  background: white;
+  margin: 1rem 0;
+  padding: 0.78rem 1.5rem;
+  border: none;
   border-radius: 2rem;
   color: #fff;
   font-size: 1.2rem;
@@ -53,99 +125,49 @@
   justify-content: center;
   transition: background 0.3s ease;
 }
+
 .btn:hover {
-    background: #e73c4f; 
-  }
-.btnImg{
-    object-fit: cover;
-    margin-right: 0.5rem;
-    height:2rem;
-
-}
-.bg{
-    position:absolute;
-    top: 0;
-    right:0;
-    width:60%;
-    z-index: -1;
-    object-fit: cover;
-    height: 100 vh;
-    transform: scaleX(-1); 
-    
+  background: #e73c4f;
 }
 
+.btnImg {
+  object-fit: cover;
+  margin-right: 0.5rem;
+  height: 2rem;
+}
+
+/* ── Background image ── */
 .bg {
-    width: 60%;
-    height: 100%;
-    object-fit: contain;
-    transform: scaleX(-1);
-    position: absolute;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  object-fit: contain;
+  transform: scaleX(-1);
+  z-index: 1;
+  pointer-events: none;
+}
 
+/* ── Responsive ── */
+@media screen and (max-width: 840px) {
+  .bg { width: 80%; right: -10vw; }
+  .introContent { font-size: 2rem; }
+  .hello { font-size: 1.5rem; }
+  .introPara { font-size: 0.875rem; }
 }
-@keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes slideIn {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-@media screen and (max-width:840px){
-    .bg{
-        width: 80%;
-        right: -10vw; 
-    }
-    .introContent{
-        font-size:2rem;
-        
-    }
-    .hello{
-        font-size: 1.5rem;
-    }
-    .introPara {
-        font-size: 0.875rem;
-    }
+
+@media screen and (max-width: 647px) {
+  .introContent { font-size: 1.6rem; }
+  .hello { font-size: 1rem; }
+  .introPara { font-size: 0.61rem; }
+  .bg { width: 90%; right: -15vw; }
 }
-@media screen and (max-width:647px){
-    
-.introContent {
-    font-size: 1.6rem; 
+
+@media screen and (max-width: 576px) {
+  .introContent { font-size: 1.4rem; }
+  .hello { font-size: 0.85rem; }
+  .introPara { font-size: 0.55rem; }
+  .bg { width: 96%; right: -18vw; }
+  .btn { font-size: 1rem; }
 }
-.hello{
-    font-size: 1rem;
-}
-.introPara{
-    font-size: 0.61rem;
-}
-.bg {
-    width: 90%;
-right: -15vw;}
-}
-@media screen and (max-width:576px){
-    
-    .introContent {
-        font-size: 1.4rem; 
-    }
-    .hello{
-        font-size: 0.85rem;
-    }
-    .introPara{
-        font-size: 0.55rem;
-    }
-    .bg {
-        width: 96%;
-    right: -18vw;}
-    } .btn {
-        font-size: 1rem;
-      }

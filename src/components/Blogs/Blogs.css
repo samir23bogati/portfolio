@@ -1,189 +1,380 @@
-.blogMeta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-    color: #ccc;
-    margin-bottom: 0.5rem;
-}
-
-.blogViews {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.blogCardImg {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-}
-
+/* ── Page layout ── */
 .blogsPage {
-    padding: 2rem 5rem;
-    min-height: 80vh;
-    background-color: rgb(30, 30, 30);
-    color: white;
-    padding-top: 100px;
+  min-height: 80vh;
+  background-color: rgb(30, 30, 30);
+  color: white;
+  padding: 7rem 5% 4rem;
 }
 
-.blogsTitle {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: white;
+/* ── Header ── */
+.blogsHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-/* Filters */
+.pageTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.pageSubtitle {
+  color: #aaa;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+/* ── Filters ── */
 .filters {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1rem;
+  pointer-events: none;
 }
 
 .searchBar {
-    padding: 0.8rem;
-    width: 300px;
-    border-radius: 25px;
-    border: none;
-    outline: none;
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border-radius: 2rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+  font-size: 0.95rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.searchBar::placeholder {
+  color: #666;
+}
+
+.searchBar:focus {
+  border-color: rgba(255, 81, 47, 0.6);
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .categoryNav {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .categoryNav button {
-    padding: 0.5rem 1rem;
-    background: #444;
-    border: none;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
+  padding: 0.45rem 1.1rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.2s;
 }
 
-.categoryNav button:hover,
+.categoryNav button:hover {
+  background: rgba(255, 204, 0, 0.15);
+  border-color: rgba(255, 204, 0, 0.5);
+  color: #ffcc00;
+  transform: translateY(-2px);
+}
+
 .categoryNav button.active {
-    background: #ffcc00;
-    color: black;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  border-color: transparent;
+  color: white;
 }
 
-/* Grid Layout */
+/* ── Blog Grid ── */
 .blogList {
-    display: grid;
-    /* Adjusted minmax to ~250px to allow fitting 4 items on standard desktop widths */
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.75rem;
 }
 
-.blogsContainer {
-    display: none;
-    /* Deprecated flex container */
-}
-
+/* ── Blog Card ── */
 .blogCard {
-    background: rgb(50, 50, 50);
-    padding: 1.5rem;
-    border-radius: 10px;
-    transition: transform 0.3s;
-    display: flex;
-    flex-direction: column;
-    /* Prevent single card from stretching too wide */
-    max-width: 400px;
-    width: 100%;
-    margin: 0 auto;
-    /* Center if it's smaller than the grid cell */
+  background: rgb(40, 40, 40);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .blogCard:hover {
-    transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 81, 47, 0.3);
 }
 
+.blogCardImgWrap {
+  overflow: hidden;
+  height: 190px;
+}
+
+.blogCardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.blogCard:hover .blogCardImg {
+  transform: scale(1.05);
+}
+
+.blogCardBody {
+  padding: 1.25rem 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ── Category Pills ── */
 .blogCardCategories {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.65rem;
 }
 
 .blogCategoryPill {
-    color: #ffcc00;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: 1px solid #ffcc00;
-    padding: 2px 6px;
-    border-radius: 10px;
+  color: #ff512f;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 81, 47, 0.4);
+  padding: 2px 8px;
+  border-radius: 2rem;
 }
 
 .blogCardTitle {
-    color: white;
-    margin-bottom: 0.5rem;
-    font-size: 1.4rem;
-}
-
-.blogCardAuthor {
-    font-size: 0.9rem;
-    color: #ccc;
-    margin-bottom: 1rem;
+  color: #f0f0f0;
+  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .blogCardContent {
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    flex-grow: 1;
+  color: #999;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+/* ── Card Footer ── */
+.blogCardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.blogMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.78rem;
+  color: #777;
+}
+
+.blogViews {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.blogDate {
+  color: #666;
 }
 
 .readMoreBtn {
-    background: white;
-    color: rgb(30, 30, 30);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: white;
+  padding: 0.45rem 1rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity 0.25s, transform 0.2s;
 }
 
 .readMoreBtn:hover {
-    background: #ffcc00;
+  opacity: 0.88;
+  transform: translateY(-1px);
 }
 
-/* Pagination */
+/* ── Empty / Error states ── */
+.blogsEmpty {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: #888;
+}
+
+.noBlogs {
+  font-size: 1rem;
+}
+
+.error {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+.retryBtn {
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: opacity 0.25s;
+}
+
+.retryBtn:hover {
+  opacity: 0.85;
+}
+
+/* ── Pagination ── */
 .pagination {
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    align-items: center;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .pagination button {
-    padding: 0.5rem 1rem;
-    background: #ffcc00;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+  padding: 0.55rem 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.pagination button:not(:disabled):hover {
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  border-color: transparent;
+  transform: translateY(-2px);
 }
 
 .pagination button:disabled {
-    background: #555;
-    cursor: not-allowed;
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
+.pageInfo {
+  color: #888;
+  font-size: 0.88rem;
+}
+
+/* ── Skeleton Loader ── */
+@keyframes shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #2a2a2a 25%, #353535 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 6px;
+}
+
+.skeletonCard {
+  pointer-events: none;
+  user-select: none;
+}
+
+.skeletonImg {
+  height: 190px;
+  border-radius: 0;
+  width: 100%;
+}
+
+.skeletonBody {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.skeletonLine {
+  height: 14px;
+  border-radius: 4px;
+}
+
+.skeletonLine.wide   { width: 80%; }
+.skeletonLine.medium { width: 55%; }
+.skeletonLine.full   { width: 100%; }
+.skeletonLine.narrow { width: 65%; }
+
+.skeletonPill {
+  height: 32px;
+  width: 100px;
+  border-radius: 2rem;
+  margin-top: 0.4rem;
+}
+
+/* ── Responsive ── */
 @media screen and (max-width: 720px) {
-    .blogsPage {
-        padding: 2rem;
-        padding-top: 80px;
-    }
+  .blogsPage {
+    padding: 6rem 4% 3rem;
+  }
+
+  .blogList {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .blogsPage {
+    padding: 5.5rem 3% 3rem;
+  }
+
+  .categoryNav {
+    gap: 0.4rem;
+  }
+
+  .categoryNav button {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+  }
 }

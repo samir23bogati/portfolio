@@ -8,10 +8,15 @@ import Footer from "./components/Footer/footer";
 import Blogs from "./components/Blogs/Blogs";
 import SingleBlog from "./components/Blogs/SingleBlog";
 import AdminDashboard from "./components/Admin/AdminDashboard";
+import CustomCursor from "./components/CustomCursor/CustomCursor";
+import Products from "./components/Products/products";
+import PageLoader from "./components/PageLoader/PageLoader";
 
 function App() {
   return (
     <div className="App">
+      <PageLoader />
+      <CustomCursor />
       <Navbar />
       <Routes>
         <Route
@@ -21,6 +26,7 @@ function App() {
               <Intro />
               <Skills />
               <Works />
+              <Products />
               <Contact />
             </>
           }

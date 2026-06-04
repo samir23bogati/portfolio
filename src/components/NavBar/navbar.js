@@ -28,8 +28,9 @@ const Navbar = () => {
 
   const navItems = [
     { id: 'intro', label: 'Intro' },
-    { id: 'works', label: 'Skills' }, // Preserving existing ID 'works' for label 'Skills'
-    { id: 'skills', label: 'Works' }, // Preserving existing ID 'skills' for label 'Works'
+    { id: 'works', label: 'Skills' },
+    { id: 'skills', label: 'Works' },
+    { id: 'products', label: 'Products' },
     { id: 'clients', label: 'Clients' }
   ];
 

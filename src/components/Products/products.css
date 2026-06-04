@@ -1,0 +1,276 @@
+/* ── Section ── */
+.productsSection {
+  width: 100%;
+  padding: 5rem 5%;
+  background: rgb(25, 25, 25);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle grid pattern behind */
+.productsSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.productsInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ── */
+.productsHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.productsBrand {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #ff512f;
+  background: rgba(255, 81, 47, 0.1);
+  border: 1px solid rgba(255, 81, 47, 0.25);
+  padding: 4px 14px;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+}
+
+.productsTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+.productsSubtitle {
+  color: #888;
+  font-size: 1rem;
+  font-weight: 300;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ── Grid ── */
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* ── Card ── */
+.productCard {
+  background: rgb(36, 36, 36);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  border-color: rgba(var(--card-accent, 255, 81, 47), 0.3);
+}
+
+/* ── Card Top Banner ── */
+.productCardTop {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.productCardTop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.productEmoji {
+  font-size: 3.5rem;
+  z-index: 1;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  transition: transform 0.3s ease;
+}
+
+.productCard:hover .productEmoji {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+.productBadgeWrap {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 2;
+}
+
+.productPlatformBadge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 3px 10px;
+  border-radius: 2rem;
+}
+
+/* ── Card Body ── */
+.productCardBody {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1rem;
+}
+
+.productMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.productName {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: white;
+}
+
+.productSubtitle {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.productDesc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #aaa;
+  flex: 1;
+}
+
+/* ── Card Footer ── */
+.productFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.productCompany {
+  font-size: 0.78rem;
+  color: #666;
+}
+
+.companyLink {
+  color: #ff512f;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.companyLink:hover {
+  color: #dd2476;
+}
+
+/* ── Store Badges ── */
+.storeBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.storeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.storeBadge:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.googleBadge {
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.appleBadge {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.badgeIcon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.badgeText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.badgeText small {
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: none;
+  letter-spacing: 0.2px;
+}
+
+.badgeText strong {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* ── Responsive ── */
+@media screen and (max-width: 680px) {
+  .productsSection {
+    padding: 4rem 4%;
+  }
+
+  .productsGrid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .storeBadges {
+    flex-direction: column;
+  }
+
+  .storeBadge {
+    justify-content: center;
+  }
+}
