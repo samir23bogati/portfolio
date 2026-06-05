@@ -1,56 +1,77 @@
 import React from "react";
 import "./works.css";
-import rct from "../../assets/rct.png";
-import html from "../../assets/html.png";
-import css from "../../assets/css.png";
-import js from "../../assets/js.png";
-import node from "../../assets/node.png";
-import github from "../../assets/github.png";
+import rct     from "../../assets/rct.png";
+import html    from "../../assets/html.png";
+import css     from "../../assets/css.png";
+import js      from "../../assets/js.png";
+import node    from "../../assets/node.png";
+import github  from "../../assets/github.png";
 import flutter from "../../assets/flutter.jpg";
-import firebase from "../../assets/Firebase.png";
-import firestore from "../../assets/firestore.png";
-import dart from "../../assets/dart.png";
-import android from "../../assets/android.png";
-import googleplayconsole from "../../assets/googleplayconsole.png";
+import firebase     from "../../assets/Firebase.png";
+import firestore    from "../../assets/firestore.png";
+import dart         from "../../assets/dart.png";
+import android      from "../../assets/android.png";
+import googleplay   from "../../assets/googleplayconsole.png";
 
-const Works = () => {
+const ROW1 = [
+  { img: html,    name: "HTML 5"       },
+  { img: css,     name: "CSS 3"        },
+  { img: js,      name: "JavaScript"   },
+  { img: rct,     name: "React.js"     },
+  { img: node,    name: "Node.js"      },
+  { img: flutter, name: "Flutter"      },
+];
+
+const ROW2 = [
+  { img: dart,      name: "Dart"          },
+  { img: firebase,  name: "Firebase"      },
+  { img: firestore, name: "Firestore"     },
+  { img: android,   name: "Android"       },
+  { img: github,    name: "GitHub"        },
+  { img: googleplay, name: "Play Console" },
+];
+
+/* Duplicate items for a seamless infinite loop */
+const MarqueeRow = ({ items, reverse = false, speed = 22 }) => {
+  const doubled = [...items, ...items];
   return (
-    <section id="works">
-      <h2 className="workstitle">My Skills</h2>
-      <span className="worksDesc">
-        I am a Passionate Software Engineer with expertise in{" "}
-        Web Development, Mobile Application Development, and Digital Creativity. 
-        I specialize in React, Node.js,Dart,Flutter,MERN STACK ensuring highly 
-        functional and visually appealing Websites.
-        <br />
-        <br />
-        As an Android & Flutter developer, I create seamless, intuitive applications 
-        that deliver great user experiences. My skill set also includes SEO Optimization, 
-        helping businesses enhance their digital presence. Additionally, I have a strong 
-        foundation in Video Editing, blending technology with creativity.
-        <br />
-        <br />
-        Whether Designing Interfaces, Developing Full-Stack applications, or optimizing 
-        online reach, I am committed to Innovation, Performance, and Excellence in 
-        every project I undertake.
-      </span>
-      
-      <div className="worksImgs">
-        <img src={html} alt="html" className="worksImg" />
-        <img src={css} alt="css" className="worksImg" />
-        <img src={js} alt="js" className="worksImg" />
-        <img src={rct} alt="react" className="worksImg" />
-        <img src={node} alt="node" className="worksImg" />
-        <img src={flutter} alt="flutter" className="worksImg" />
-        <img src={github} alt="github" className="worksImg" />
-        <img src={firebase} alt="firebase" className="worksImg" />
-        <img src={dart} alt="dart" className="worksImg" />
-        <img src={firestore} alt="firestore" className="worksImg" />
-        <img src={android} alt="android" className="worksImg" />
-        <img src={googleplayconsole} alt="googleplayconsole" className="worksImg" />
+    <div className={`marquee-row${reverse ? " marquee-rev" : ""}`}>
+      <div className="marquee-belt" style={{ "--speed": `${speed}s` }}>
+        {doubled.map((sk, i) => (
+          <div key={i} className="sk-chip">
+            <img src={sk.img} alt={sk.name} className="sk-logo" />
+            <span className="sk-name">{sk.name}</span>
+          </div>
+        ))}
       </div>
-      <button className="workBtn">See More</button>
-    </section>
+    </div>
   );
 };
+
+const Works = () => (
+  <section id="works">
+    <div className="works-inner">
+
+      <div className="works-header">
+        <span className="works-eyebrow">Tech Stack</span>
+        <h2 className="workstitle">My Skills</h2>
+        <p className="worksDesc">
+          Building web &amp; mobile products with modern frameworks and tools —
+          from React and Node.js on the web to Flutter and Dart on mobile.
+        </p>
+      </div>
+
+      <div className="marquee-stage">
+        {/* Edge fade-out gradients */}
+        <div className="marquee-edge left"  />
+        <div className="marquee-edge right" />
+
+        <MarqueeRow items={ROW1} speed={22} />
+        <MarqueeRow items={ROW2} speed={28} reverse />
+      </div>
+
+    </div>
+  </section>
+);
+
 export default Works;
