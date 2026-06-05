@@ -1,10 +1,11 @@
-.footer{
-    width:100vw;
-    height:4rem;
-    background: rgb(40,40,40);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 300;
-    font-size: small;
+.footer {
+  width: 100vw;
+  height: 4rem;
+  background: var(--bg-footer);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  font-size: small;
 }

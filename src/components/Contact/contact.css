@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #121212;
-  color: white;
+  background-color: var(--bg-alt);
+  color: var(--text-primary);
   animation: fadeIn 1.2s ease-in-out;
 }
 
@@ -23,7 +23,7 @@
   font-size: 1rem;
   padding: 0 1rem;
   margin-bottom: 1rem;
-  color: #ccc;
+  color: var(--text-secondary);
 }
 
 .clientImgs {
@@ -62,9 +62,10 @@
 .contactForm {
   margin: 2rem 0 1.5rem;
   padding: 2rem;
-  background: #222;
+  background: var(--bg-form);
+  border: 1px solid var(--border-card);
   border-radius: 1rem;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px var(--shadow-card);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,9 +79,9 @@
   margin: 0.75rem 0;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  border: none;
-  color: white;
-  background: #333;
+  border: 1px solid var(--border-input);
+  color: var(--text-primary);
+  background: var(--bg-input);
 }
 
 .submitBtn {

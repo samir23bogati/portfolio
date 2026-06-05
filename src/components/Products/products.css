@@ -2,7 +2,7 @@
 .productsSection {
   width: 100%;
   padding: 5rem 5%;
-  background: rgb(25, 25, 25);
+  background: var(--bg-alt);
   position: relative;
   overflow: hidden;
 }
@@ -13,8 +13,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
 }
@@ -49,13 +49,13 @@
 .productsTitle {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
-  color: white;
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
   letter-spacing: -0.5px;
 }
 
 .productsSubtitle {
-  color: #888;
+  color: var(--text-muted);
   font-size: 1rem;
   font-weight: 300;
   max-width: 500px;
@@ -71,10 +71,10 @@
 
 /* ── Card ── */
 .productCard {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-card-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-medium);
   border-radius: 20px;
   overflow: hidden;
   display: flex;
@@ -84,8 +84,8 @@
 
 .productCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 50px var(--shadow-card);
+  border-color: var(--border-strong, rgba(255,255,255,0.2));
 }
 
 /* ── Card Top Banner ── */
@@ -153,7 +153,7 @@
 .productName {
   font-size: 1.35rem;
   font-weight: 800;
-  color: white;
+  color: var(--text-primary);
 }
 
 .productSubtitle {
@@ -167,7 +167,7 @@
 .productDesc {
   font-size: 0.9rem;
   line-height: 1.7;
-  color: #aaa;
+  color: var(--text-muted);
   flex: 1;
 }
 
@@ -177,7 +177,7 @@
   flex-direction: column;
   gap: 0.85rem;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .productCompany {

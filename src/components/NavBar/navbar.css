@@ -10,12 +10,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(20, 20, 20, 0.75);
+  background: var(--bg-navbar);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--border-navbar);
+  box-shadow: 0 4px 24px var(--shadow-navbar);
   animation: slideDown 0.5s ease forwards;
+  gap: 0.75rem;
 }
 
 @keyframes slideDown {
@@ -48,6 +49,8 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
 }
 
 .desktopMenuListItem {
@@ -55,7 +58,7 @@
   padding: 0.4rem 0.75rem;
   font-size: 0.95rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--nav-link);
   cursor: pointer;
   border-radius: 6px;
   transition: color 0.25s;
@@ -76,14 +79,95 @@
   border-radius: 2px;
 }
 
-.desktopMenuListItem:hover {
-  color: white;
-}
+.desktopMenuListItem:hover { color: var(--nav-link-hover); }
 
 .desktopMenuListItem:hover::after,
-.desktopMenuListItem.active::after {
-  transform: scaleX(1);
+.desktopMenuListItem.active::after { transform: scaleX(1); }
+
+/* ── Right-side actions group ── */
+.navbarActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
+
+/* ── Theme Toggle ── */
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.28rem 0.5rem 0.28rem 0.28rem;
+  border-radius: 2rem;
+  border: 1px solid var(--toggle-border);
+  background: var(--toggle-track);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  flex-shrink: 0;
+}
+
+.themeToggle:hover {
+  box-shadow: 0 0 0 3px rgba(255, 81, 47, 0.18);
+  border-color: rgba(255, 81, 47, 0.45);
+}
+
+/* Sliding track */
+.tt-track {
+  position: relative;
+  width: 2.4rem;
+  height: 1.35rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+[data-theme="light"] .tt-track {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.tt-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 1.0rem;
+  height: 1.0rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  box-shadow: 0 2px 6px rgba(255, 81, 47, 0.45);
+  transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Thumb slides right in light mode */
+.themeToggle.is-light .tt-thumb {
+  transform: translateX(1.05rem);
+}
+
+/* Sun / Moon icons */
+.tt-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.22rem;
+  font-size: 0;
+  flex-shrink: 0;
+}
+
+.tt-sun,
+.tt-moon {
+  display: flex;
+  align-items: center;
+  transition: color 0.3s, opacity 0.3s;
+}
+
+/* Dark mode: sun is accent, moon is dim */
+.themeToggle .tt-sun  { color: #ff8c42; opacity: 1; }
+.themeToggle .tt-moon { color: var(--text-muted); opacity: 0.5; }
+
+/* Light mode: moon is accent, sun is dim */
+.themeToggle.is-light .tt-sun  { color: var(--text-muted); opacity: 0.5; }
+.themeToggle.is-light .tt-moon { color: #5c6bc0; opacity: 1; }
 
 /* ── Contact Button ── */
 .desktopMenuBtn {
@@ -131,9 +215,7 @@
   transition: transform 0.2s;
 }
 
-.mobMenu:hover {
-  transform: scale(1.08);
-}
+.mobMenu:hover { transform: scale(1.08); }
 
 /* ── Mobile Dropdown ── */
 .navMenu {
@@ -145,10 +227,10 @@
   gap: 0.25rem;
   padding: 0.75rem;
   min-width: 200px;
-  background: rgba(28, 28, 28, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-dropdown);
+  border: 1px solid var(--border-dropdown);
   border-radius: 14px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 40px var(--shadow-dropdown);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -160,11 +242,11 @@
 
 @keyframes menuFadeIn {
   from { opacity: 0; transform: translateY(-8px) scale(0.97); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
 }
 
 .ListItem {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--nav-link);
   padding: 0.65rem 1rem;
   font-size: 0.95rem;
   font-weight: 500;
@@ -176,36 +258,25 @@
 }
 
 .ListItem:hover {
-  background: rgba(255, 81, 47, 0.15);
-  color: white;
+  background: rgba(255, 81, 47, 0.12);
+  color: var(--nav-link-hover);
   transform: translateX(4px);
 }
 
 /* ── Breakpoints ── */
 @media screen and (max-width: 768px) {
-  .mobMenu { display: block; }
-  .desktopMenu { display: none; }
+  .mobMenu     { display: block; }
+  .desktopMenu { display: none;  }
   .desktopMenuBtn { display: none; }
-
-  .navbar {
-    padding: 0 4%;
-  }
+  .navbar { padding: 0 4%; }
 }
 
 @media screen and (max-width: 480px) {
-  .navbar {
-    height: 4.5rem;
-    padding: 0 4%;
-  }
-
-  .navMenu {
-    top: calc(4.5rem + 0.5rem);
-    right: 4%;
-    min-width: 180px;
-  }
-
-  .logo {
-    height: 2.4rem;
-    width: 3rem;
-  }
+  .navbar { height: 4.5rem; padding: 0 4%; }
+  .navMenu { top: calc(4.5rem + 0.5rem); right: 4%; min-width: 180px; }
+  .logo { height: 2.4rem; width: 3rem; }
+  .themeToggle { padding: 0.22rem 0.4rem 0.22rem 0.22rem; }
+  .tt-track { width: 2.1rem; height: 1.2rem; }
+  .tt-thumb { width: 0.88rem; height: 0.88rem; }
+  .themeToggle.is-light .tt-thumb { transform: translateX(0.9rem); }
 }

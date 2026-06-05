@@ -1,8 +1,8 @@
 /* ── Page layout ── */
 .blogsPage {
   min-height: 80vh;
-  background-color: rgb(30, 30, 30);
-  color: white;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
   padding: 7rem 5% 4rem;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .pageSubtitle {
-  color: #aaa;
+  color: var(--text-muted);
   font-size: 1rem;
   font-weight: 300;
 }
@@ -57,16 +57,16 @@
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 2.5rem;
   border-radius: 2rem;
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border: 1.5px solid var(--border-search);
   outline: none;
-  background: rgba(255, 255, 255, 0.06);
-  color: white;
+  background: var(--bg-search);
+  color: var(--text-primary);
   font-size: 0.95rem;
   transition: border-color 0.25s, background 0.25s;
 }
 
 .searchBar::placeholder {
-  color: #666;
+  color: var(--text-muted);
 }
 
 .searchBar:focus {
@@ -83,9 +83,9 @@
 
 .categoryNav button {
   padding: 0.45rem 1.1rem;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
-  color: #ccc;
+  background: var(--bg-cat-btn);
+  border: 1.5px solid var(--border-medium);
+  color: var(--text-secondary);
   border-radius: 2rem;
   cursor: pointer;
   font-size: 0.85rem;
@@ -115,9 +115,9 @@
 
 /* ── Blog Card ── */
 .blogCard {
-  background: rgb(40, 40, 40);
+  background: var(--bg-card);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-card);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -173,7 +173,7 @@
 }
 
 .blogCardTitle {
-  color: #f0f0f0;
+  color: var(--text-primary);
   margin-bottom: 0.6rem;
   font-size: 1.1rem;
   font-weight: 700;
@@ -181,7 +181,7 @@
 }
 
 .blogCardContent {
-  color: #999;
+  color: var(--text-muted);
   font-size: 0.9rem;
   line-height: 1.65;
   margin-bottom: 1rem;
@@ -196,7 +196,7 @@
   gap: 0.5rem;
   margin-top: auto;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .blogMeta {
@@ -204,7 +204,7 @@
   flex-direction: column;
   gap: 2px;
   font-size: 0.78rem;
-  color: #777;
+  color: var(--text-faint);
 }
 
 .blogViews {
@@ -277,9 +277,9 @@
 
 .pagination button {
   padding: 0.55rem 1.25rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: white;
+  background: var(--bg-pag-btn);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
   border-radius: 2rem;
   cursor: pointer;
   font-weight: 600;
@@ -310,7 +310,11 @@
 }
 
 .skeleton {
-  background: linear-gradient(90deg, #2a2a2a 25%, #353535 50%, #2a2a2a 75%);
+  background: linear-gradient(90deg,
+    var(--skeleton-base) 25%,
+    var(--skeleton-shine) 50%,
+    var(--skeleton-base) 75%
+  );
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite linear;
   border-radius: 6px;

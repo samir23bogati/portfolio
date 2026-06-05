@@ -10,6 +10,7 @@ import SingleBlog from "./components/Blogs/SingleBlog";
 import AdminDashboard from "./components/Admin/AdminDashboard";
 import CustomCursor from "./components/CustomCursor/CustomCursor";
 import Products from "./components/Products/products";
+import Timeline from "./components/Timeline/Timeline";
 import PageLoader from "./components/PageLoader/PageLoader";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Intro />
               <Skills />
               <Works />
+              <Timeline />
               <Products />
               <Contact />
             </>

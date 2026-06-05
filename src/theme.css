@@ -1,0 +1,121 @@
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS — dark (default) & light
+═══════════════════════════════════════════════ */
+
+:root,
+[data-theme="dark"] {
+  --bg-page:        rgb(30, 30, 30);
+  --bg-alt:         rgb(25, 25, 25);
+  --bg-footer:      rgb(40, 40, 40);
+  --bg-navbar:      rgba(20, 20, 20, 0.75);
+  --bg-dropdown:    rgba(28, 28, 28, 0.95);
+  --bg-card:        rgb(40, 40, 40);
+  --bg-card-glass:  rgba(255, 255, 255, 0.05);
+  --bg-form:        #222222;
+  --bg-input:       #333333;
+  --bg-search:      rgba(255, 255, 255, 0.06);
+  --bg-cat-btn:     rgba(255, 255, 255, 0.07);
+  --bg-pag-btn:     rgba(255, 255, 255, 0.08);
+
+  --text-primary:   #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted:     #888888;
+  --text-faint:     #777777;
+  --nav-link:       rgba(255, 255, 255, 0.85);
+  --nav-link-hover: #ffffff;
+
+  --border-subtle:   rgba(255, 255, 255, 0.07);
+  --border-card:     rgba(255, 255, 255, 0.06);
+  --border-medium:   rgba(255, 255, 255, 0.10);
+  --border-navbar:   rgba(255, 255, 255, 0.07);
+  --border-dropdown: rgba(255, 255, 255, 0.10);
+  --border-search:   rgba(255, 255, 255, 0.10);
+  --border-input:    transparent;
+
+  --shadow-navbar:  rgba(0, 0, 0, 0.20);
+  --shadow-card:    rgba(0, 0, 0, 0.40);
+  --shadow-lg:      rgba(0, 0, 0, 0.60);
+  --shadow-dropdown:rgba(0, 0, 0, 0.40);
+
+  --grid-line: rgba(255, 255, 255, 0.025);
+
+  --skeleton-base:  #2a2a2a;
+  --skeleton-shine: #353535;
+
+  --toggle-track: rgba(255, 255, 255, 0.12);
+  --toggle-border: rgba(255, 255, 255, 0.15);
+
+  --cursor-color: rgba(255, 255, 255, 0.92);
+  --cursor-glow:  rgba(255, 255, 255, 0.35);
+  --cursor-ring:  rgba(255, 255, 255, 0.28);
+}
+
+[data-theme="light"] {
+  --bg-page:        #f0f4fc;
+  --bg-alt:         #e8ecf8;
+  --bg-footer:      #dde2f0;
+  --bg-navbar:      rgba(248, 250, 255, 0.88);
+  --bg-dropdown:    rgba(255, 255, 255, 0.97);
+  --bg-card:        #ffffff;
+  --bg-card-glass:  rgba(255, 255, 255, 0.92);
+  --bg-form:        #ffffff;
+  --bg-input:       #f5f6fc;
+  --bg-search:      rgba(0, 0, 0, 0.04);
+  --bg-cat-btn:     rgba(0, 0, 0, 0.05);
+  --bg-pag-btn:     rgba(0, 0, 0, 0.06);
+
+  --text-primary:   #1a1a2e;
+  --text-secondary: #4a5568;
+  --text-muted:     #718096;
+  --text-faint:     #8a94a6;
+  --nav-link:       rgba(26, 26, 46, 0.80);
+  --nav-link-hover: #1a1a2e;
+
+  --border-subtle:   rgba(0, 0, 0, 0.06);
+  --border-card:     rgba(0, 0, 0, 0.08);
+  --border-medium:   rgba(0, 0, 0, 0.12);
+  --border-navbar:   rgba(0, 0, 0, 0.08);
+  --border-dropdown: rgba(0, 0, 0, 0.10);
+  --border-search:   rgba(0, 0, 0, 0.12);
+  --border-input:    rgba(0, 0, 0, 0.08);
+
+  --shadow-navbar:   rgba(0, 0, 0, 0.08);
+  --shadow-card:     rgba(0, 0, 0, 0.10);
+  --shadow-lg:       rgba(0, 0, 0, 0.18);
+  --shadow-dropdown: rgba(0, 0, 0, 0.15);
+
+  --grid-line: rgba(0, 0, 0, 0.04);
+
+  --skeleton-base:  #e2e6f0;
+  --skeleton-shine: #edf0fa;
+
+  --toggle-track: rgba(0, 0, 0, 0.10);
+  --toggle-border: rgba(0, 0, 0, 0.15);
+
+  --cursor-color: rgba(20, 20, 40, 0.82);
+  --cursor-glow:  rgba(20, 20, 40, 0.18);
+  --cursor-ring:  rgba(20, 20, 40, 0.22);
+}
+
+/* ─── Base ─────────────────────────────────── */
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+/* ─── Smooth transition class ───────────────
+   Applied for 450 ms during a theme switch.
+   !important overrides component-level transitions
+   so every colour change animates together.
+─────────────────────────────────────────────── */
+html.theme-switching,
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition:
+    background-color 0.4s ease,
+    background       0.4s ease,
+    color            0.4s ease,
+    border-color     0.4s ease,
+    box-shadow       0.4s ease !important;
+}

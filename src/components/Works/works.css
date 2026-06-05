@@ -24,7 +24,7 @@
     margin:1.25rem 0;
     font-size: 3rem;
     font-weight: 600;
-    color:white;
+    color: var(--text-primary);
     transition: transform 0.3s ease-in-out;
 }
 .workstitle:hover {
@@ -34,7 +34,7 @@
     font-weight:300;
     font-size: 1.1rem;
     max-width:50rem;
-    color:whitesmoke;
+    color: var(--text-secondary);
 }
 .worksDesc:hover{
     transform: translateY(-5px);
