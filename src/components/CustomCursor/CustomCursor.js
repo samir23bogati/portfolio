@@ -2,62 +2,52 @@ import React, { useEffect, useRef } from 'react';
 import './CustomCursor.css';
 
 const CustomCursor = () => {
-  const dotRef  = useRef(null);
-  const ringRef = useRef(null);
-  const mouse   = useRef({ x: -300, y: -300 });
-  const ring    = useRef({ x: -300, y: -300 });
-  const rafRef  = useRef(null);
-  const hover   = useRef(false);
+  const dotRef   = useRef(null);
+  const ringRef  = useRef(null);
+  const mouse    = useRef({ x: -300, y: -300 });
+  const ringPos  = useRef({ x: -300, y: -300 }); // trailing position — separate from ringRef DOM ref
+  const rafRef   = useRef(null);
+  const hovered  = useRef(false);
 
   useEffect(() => {
     const dot  = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
 
-    /* ── Precise dot tracks the real pointer ── */
+    /* ── Inner dot: instant ── */
     const onMove = (e) => {
-      mouse.current = { x: e.clientX, y: e.clientY };
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
       dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     };
 
-    /* ── Interactive-element detection ── */
+    /* ── Hover detection ── */
     const onOver = (e) => {
-      const interactive =
-        e.target.closest('a, button, input, textarea, select, label, [role="button"]') ||
+      const hit =
+        !!e.target.closest('a, button, input, textarea, select, label, [role="button"]') ||
         window.getComputedStyle(e.target).cursor === 'pointer';
 
-      if (interactive && !hover.current) {
-        hover.current = true;
-        dot.classList.add('cursor-hover');
-        ring.classList.add('cursor-hover');
-      } else if (!interactive && hover.current) {
-        hover.current = false;
-        dot.classList.remove('cursor-hover');
-        ring.classList.remove('cursor-hover');
+      if (hit !== hovered.current) {
+        hovered.current = hit;
+        dot.classList.toggle('c-hover',  hit);
+        ring.classList.toggle('c-hover', hit);
       }
     };
 
     /* ── Click squeeze ── */
-    const onDown = () => {
-      dot.classList.add('cursor-click');
-      ring.classList.add('cursor-click');
-    };
-    const onUp = () => {
-      dot.classList.remove('cursor-click');
-      ring.classList.remove('cursor-click');
-    };
+    const onDown = () => { dot.classList.add('c-press');    ring.classList.add('c-press');    };
+    const onUp   = () => { dot.classList.remove('c-press'); ring.classList.remove('c-press'); };
 
-    /* ── Window edge hide / show ── */
-    const onLeave  = () => { dot.style.opacity = '0'; ring.style.opacity = '0'; };
-    const onEnter  = () => { dot.style.opacity = '1'; ring.style.opacity = '1'; };
+    /* ── Fade at window edge ── */
+    const onLeave = () => { dot.style.opacity = '0'; ring.style.opacity = '0'; };
+    const onEnter = () => { dot.style.opacity = '1'; ring.style.opacity = '1'; };
 
-    /* ── Smooth trailing ring (lerp) ── */
+    /* ── Outer ring: lerp trail (0.085 — clearly visible lag) ── */
     const lerp = (a, b, t) => a + (b - a) * t;
     const animate = () => {
-      ring.current.x = lerp(ring.current.x, mouse.current.x, 0.1);
-      ring.current.y = lerp(ring.current.y, mouse.current.y, 0.1);
-      ringRef.current.style.transform =
-        `translate(${ring.current.x}px, ${ring.current.y}px)`;
+      ringPos.current.x = lerp(ringPos.current.x, mouse.current.x, 0.085);
+      ringPos.current.y = lerp(ringPos.current.y, mouse.current.y, 0.085);
+      ring.style.transform = `translate(${ringPos.current.x}px, ${ringPos.current.y}px)`;
       rafRef.current = requestAnimationFrame(animate);
     };
 
@@ -82,8 +72,8 @@ const CustomCursor = () => {
 
   return (
     <>
-      <div className="cur-dot"  ref={dotRef}  />
-      <div className="cur-ring" ref={ringRef} />
+      <div className="c-dot"  ref={dotRef}  />
+      <div className="c-ring" ref={ringRef} />
     </>
   );
 };
