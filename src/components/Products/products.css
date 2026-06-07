@@ -67,9 +67,60 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  /* Shared 3D perspective so both cards share one vanishing point */
+  perspective: 1400px;
+  perspective-origin: center 40%;
 }
 
-/* ── Card ── */
+/* ═══════════════════════════════════════
+   DOOR ANIMATION
+   Cards start "closed" (rotated 85° on Y)
+   and swing open when they enter the viewport.
+═══════════════════════════════════════ */
+
+/* Closed state — set by JS class, before observer fires */
+.productCard.door-left {
+  opacity: 0;
+  transform: rotateY(-85deg);
+  transform-origin: left center;
+}
+
+.productCard.door-right {
+  opacity: 0;
+  transform: rotateY(85deg);
+  transform-origin: right center;
+}
+
+/* Open animation triggered by IntersectionObserver */
+.productCard.door-left.door-open {
+  animation: doorSwingLeft 0.85s cubic-bezier(0.22, 1, 0.36, 1) var(--door-delay, 0s) forwards;
+}
+
+.productCard.door-right.door-open {
+  animation: doorSwingRight 0.85s cubic-bezier(0.22, 1, 0.36, 1) var(--door-delay, 0s) forwards;
+}
+
+@keyframes doorSwingLeft {
+  0%   { opacity: 0; transform: rotateY(-85deg); }
+  45%  { opacity: 1;                             }
+  100% { opacity: 1; transform: rotateY(0deg);   }
+}
+
+@keyframes doorSwingRight {
+  0%   { opacity: 0; transform: rotateY(85deg); }
+  45%  { opacity: 1;                            }
+  100% { opacity: 1; transform: rotateY(0deg);  }
+}
+
+/* After animation ends, JS adds door-done and clears inline styles.
+   Now the card behaves normally — hover transition takes over. */
+.productCard.door-done {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+/* ── Card (base) ── */
 .productCard {
   background: var(--bg-card-glass);
   backdrop-filter: blur(20px);
@@ -79,13 +130,34 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.productCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px var(--shadow-card);
-  border-color: var(--border-strong, rgba(255,255,255,0.2));
+.productCard.door-done:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 28px 60px var(--shadow-card),
+              0 0 0 1px rgba(255, 81, 47, 0.15);
+  border-color: rgba(255, 81, 47, 0.3);
+}
+
+/* ── Mobile: simpler fade-up (no 3-D rotation on narrow screens) ── */
+@media (max-width: 640px) {
+  .productsGrid { perspective: none; }
+
+  .productCard.door-left,
+  .productCard.door-right {
+    transform: translateY(36px);
+    transform-origin: center;
+  }
+
+  .productCard.door-left.door-open,
+  .productCard.door-right.door-open {
+    animation: doorFadeUp 0.65s ease var(--door-delay, 0s) forwards;
+  }
+
+  @keyframes doorFadeUp {
+    from { opacity: 0; transform: translateY(36px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
 }
 
 /* ── Card Top Banner ── */

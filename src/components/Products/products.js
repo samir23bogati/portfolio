@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./products.css";
 
 const GooglePlayBadge = ({ url }) => (
@@ -40,12 +40,7 @@ const PRODUCTS = [
     emoji: "📖",
     company: "BogatiX",
     companyUrl: null,
-    stores: [
-      {
-        type: "play",
-        url: "https://play.google.com/store/apps/details?id=com.nec_mcq",
-      },
-    ],
+    stores: [{ type: "play", url: "https://play.google.com/store/apps/details?id=com.nec_mcq" }],
   },
   {
     id: "byaparhouse",
@@ -59,19 +54,47 @@ const PRODUCTS = [
     company: "ManiCorp",
     companyUrl: "https://manicorp.com.np",
     stores: [
-      {
-        type: "play",
-        url: "https://play.google.com/store/apps/details?id=com.byaparhouseapp",
-      },
-      {
-        type: "apple",
-        url: "https://apps.apple.com/us/app/byaparhouse/id6760815538",
-      },
+      { type: "play",  url: "https://play.google.com/store/apps/details?id=com.byaparhouseapp" },
+      { type: "apple", url: "https://apps.apple.com/us/app/byaparhouse/id6760815538" },
     ],
   },
 ];
 
 const Products = () => {
+  const cardRefs = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const card = entry.target;
+          card.classList.add("door-open");
+
+          /* After the door swings fully open, restore a clean transform
+             so normal :hover works without fighting the animation fill */
+          card.addEventListener(
+            "animationend",
+            () => {
+              card.style.opacity   = "1";
+              card.style.transform = "none";
+              card.style.animation = "none";
+              card.classList.add("door-done");
+            },
+            { once: true }
+          );
+
+          observer.unobserve(card);
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    cardRefs.current.forEach((c) => c && observer.observe(c));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="products" className="productsSection">
       <div className="productsInner">
@@ -84,16 +107,18 @@ const Products = () => {
         </div>
 
         <div className="productsGrid">
-          {PRODUCTS.map((product) => (
+          {PRODUCTS.map((product, i) => (
             <div
               key={product.id}
-              className="productCard"
-              style={{ "--card-accent": product.accent }}
+              ref={(el) => (cardRefs.current[i] = el)}
+              /* even index → left hinge, odd → right hinge */
+              className={`productCard ${i % 2 === 0 ? "door-left" : "door-right"}`}
+              style={{
+                "--card-accent": product.accent,
+                "--door-delay": `${i * 0.2}s`,
+              }}
             >
-              <div
-                className="productCardTop"
-                style={{ background: product.gradient }}
-              >
+              <div className="productCardTop" style={{ background: product.gradient }}>
                 <span className="productEmoji">{product.emoji}</span>
                 <div className="productBadgeWrap">
                   <span className="productPlatformBadge">Mobile App</span>
@@ -112,25 +137,19 @@ const Products = () => {
                   <span className="productCompany">
                     by{" "}
                     {product.companyUrl ? (
-                      <a
-                        href={product.companyUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="companyLink"
-                      >
+                      <a href={product.companyUrl} target="_blank" rel="noreferrer" className="companyLink">
                         {product.company}
                       </a>
                     ) : (
                       <strong>{product.company}</strong>
                     )}
                   </span>
-
                   <div className="storeBadges">
                     {product.stores.map((store) =>
                       store.type === "play" ? (
-                        <GooglePlayBadge key="play" url={store.url} />
+                        <GooglePlayBadge key="play"  url={store.url} />
                       ) : (
-                        <AppStoreBadge key="apple" url={store.url} />
+                        <AppStoreBadge  key="apple" url={store.url} />
                       )
                     )}
                   </div>

@@ -69,7 +69,9 @@ const Skills = () => {
       <div className="skillGrid">
         {skillData.map((skill, index) => (
           <div className="skillCard fadeInUp" key={index} style={{ animationDelay: `${index * 0.15}s` }}>
-            <img src={skill.img} alt={skill.title} className="skillCardImg" />
+            <div className="skillCardImgWrap">
+              <img src={skill.img} alt={skill.title} className="skillCardImg" />
+            </div>
             <div className="skillCardText">
               <h3>{skill.title}</h3>
               <p>{skill.desc}</p>

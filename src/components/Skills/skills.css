@@ -42,32 +42,39 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-medium);
   border-radius: 1.5rem;
-  overflow: hidden;
+  /* No overflow:hidden — lets the card scale cleanly without clipping the image */
   padding: 1rem;
   box-shadow: 0 8px 32px var(--shadow-card);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
   opacity: 0;
   transform: translateY(40px);
   animation: fadeInUp 1s forwards;
 }
 
 .skillCard:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 20px 50px var(--shadow-card);
-  border-color: var(--border-strong, rgba(255,255,255,0.2));
+  /* Lift + scale the whole card — image scales with it, no clipping */
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 24px 56px var(--shadow-card),
+              0 0 0 1px rgba(255, 81, 47, 0.12);
+  border-color: rgba(255, 81, 47, 0.35);
+}
+
+/* Image wrapper clips within the card's own rounded area */
+.skillCardImgWrap {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .skillCardImg {
   width: 100%;
   max-height: 180px;
   object-fit: cover;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
-}
-
-.skillCardImg:hover {
-  transform: scale(1.05);
+  display: block;
+  /* No separate hover scale — card hover scales everything uniformly */
 }
 
 .skillCardText h3 {

@@ -83,8 +83,8 @@ const TIMELINE = [
         skills: ["Flutter", "Firebase", "Google Play Console"],
       },
       {
-        role: "Web Developer",
-        company: "GACtek Inc.",
+        role: "Web Developer", 
+        company: "GAOtek Inc.",
         type: "Part-time",
         period: "Dec 2024",
         duration: "3 mos",
@@ -121,7 +121,7 @@ const TIMELINE = [
       },
       {
         role: "Flutter Developer",
-        company: "Pathshala Inc. Pvt. Ltd.",
+        company: "Padhshala Inc. Pvt. Ltd.",
         type: "Full-time",
         period: "Jan – Mar 2025",
         duration: "3 mos",
