@@ -54,17 +54,9 @@ const TIMELINE = [
     label: "Full-Stack",
     desc: "MERN stack, Flutter & founding BogatiX",
     accent: "#a855f7",
-    stats: { roles: 5, months: 13, skills: 12 },
+    stats: { roles: 4, months: 13, skills: 12 },
     experiences: [
-      {
-        role: "Founder & Developer",
-        company: "BogatiX",
-        type: "Full-time",
-        period: "Jan 2025 – Present",
-        duration: "1+ yrs",
-        skills: ["Flutter", "React.js", "Node.js", "Firebase"],
-        current: true,
-      },
+      
       {
         role: "Full-Stack Developer",
         company: "Cognifyz Technologies",
@@ -107,8 +99,17 @@ const TIMELINE = [
     label: "Flutter Expert",
     desc: "Senior mobile engineering across multiple companies",
     accent: "#ff512f",
-    stats: { roles: 4, months: 16, skills: 10 },
+    stats: { roles: 5, months: 16, skills: 10 },
     experiences: [
+      {
+        role: "Founder & Developer",
+        company: "BogatiX",
+        type: "Full-time",
+        period: "Jan 2025 – Present",
+        duration: "1+ yrs",
+        skills: ["Flutter", "React.js", "Node.js", "Firebase"],
+        current: true,
+      },
       {
         role: "Mid Level Flutter Developer",
         company: "Man I Corp Nepal",
