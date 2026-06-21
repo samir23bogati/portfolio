@@ -32,7 +32,7 @@ const TIMELINE = [
       },
       {
         role: "SEO / Content Writer",
-        company: "Whatthemspal",
+        company: "WhattheNepal.com",
         type: "Full-time",
         period: "Dec 2023 – Mar 2024",
         duration: "4 mos",
@@ -40,7 +40,7 @@ const TIMELINE = [
       },
       {
         role: "Social Media Manager",
-        company: "CherniDigital",
+        company: "CherieDigitalTech",
         type: "Full-time",
         period: "Dec 2023 – Mar 2024",
         duration: "4 mos",
@@ -60,8 +60,8 @@ const TIMELINE = [
         role: "Founder & Developer",
         company: "BogatiX",
         type: "Full-time",
-        period: "Jan 2024 – Present",
-        duration: "2+ yrs",
+        period: "Jan 2025 – Present",
+        duration: "1+ yrs",
         skills: ["Flutter", "React.js", "Node.js", "Firebase"],
         current: true,
       },
@@ -75,7 +75,7 @@ const TIMELINE = [
       },
       {
         role: "Silver Trading App",
-        company: "Sucha Ornaments",
+        company: "Suvha Ornaments",
         type: "Freelance",
         period: "2024 · 1 mo",
         duration: "1 mo",
@@ -92,7 +92,7 @@ const TIMELINE = [
       },
       {
         role: "Flutter / MERNSTACK Developer",
-        company: "Janaktech.com",
+        company: "Danaktech.com",
         type: "Full-time",
         period: "Nov 2024 – Jan 2025",
         duration: "3 mos",
@@ -129,7 +129,7 @@ const TIMELINE = [
       },
       {
         role: "Mid Level Flutter Developer",
-        company: "Supreme IT Solutions",
+        company: "Suprime IT Solutions",
         type: "Full-time",
         period: "2025 – Aug 2025",
         duration: "2 mos",
@@ -137,7 +137,7 @@ const TIMELINE = [
       },
       {
         role: "Flutter Developer",
-        company: "Chichii.online",
+        company: "Chichii Online",
         type: "Part-time",
         period: "2025 – Sep 2025",
         duration: "8 mos",
