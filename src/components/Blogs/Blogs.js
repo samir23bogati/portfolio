@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { getApiUrl } from "../../apiConfig";
+import { Seo, SITE_URL } from "../../utils/seo";
 import "./Blogs.css";
 
 const CACHE_TTL = 2 * 60 * 1000; // 2 minutes
@@ -126,10 +126,11 @@ const Blogs = () => {
 
   return (
     <section className="blogsPage">
-      <Helmet>
-        <title>Blogs - Samir Bogati</title>
-        <meta name="description" content="My professional blogs on tech, travel, and more." />
-      </Helmet>
+      <Seo
+        title="Blogs"
+        description="Thoughts on tech, travel, and everything in between by Samir Bogati."
+        url={`${SITE_URL}/#/blogs`}
+      />
 
       <div className="blogsHeader">
         <h2 className="pageTitle">My Blogs</h2>
@@ -208,7 +209,8 @@ const Blogs = () => {
                 <h3 className="blogCardTitle">{blog?.title}</h3>
 
                 <p className="blogCardContent">
-                  {(blog?.sectionOne || blog?.content || "").substring(0, 110)}...
+                  {(blog?.excerpt || blog?.sectionOne || blog?.content || "").substring(0, 110)}
+                  ...
                 </p>
 
                 <div className="blogCardFooter">
@@ -216,7 +218,7 @@ const Blogs = () => {
                     <span className="blogViews">&#128065; {blog?.views || 0}</span>
                     <span className="blogDate">{formatDate(blog?.createdAt)}</span>
                   </div>
-                  <Link to={`/blogs/${blog?._id}`} className="readMoreBtn">
+                  <Link to={`/blogs/${blog?.slug || blog?._id}`} className="readMoreBtn">
                     Read More &rarr;
                   </Link>
                 </div>
